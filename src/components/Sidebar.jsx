@@ -1,14 +1,22 @@
+import { Link } from "react-router-dom";
 const Sidebar = () => {
+  const categories = ["회고", "React", "Vue", "JS", "TS", "Etc"];
   return (
-    <div className="w-64 h-screen py-4">
+    <div className="w-64 h-screen py-4 overflow-y-auto">
       <ul className="pl-10">
-        <li className="py-2 hover:font-bold hover:cursor-pointer">Home</li>
-        <li className="py-2 hover:font-bold hover:cursor-pointer">회고</li>
-        <li className="py-2 hover:font-bold hover:cursor-pointer">React</li>
-        <li className="py-2 hover:font-bold hover:cursor-pointer">Vue</li>
-        <li className="py-2 hover:font-bold hover:cursor-pointer">JS</li>
-        <li className="py-2 hover:font-bold hover:cursor-pointer">TS</li>
-        <li className="py-2 hover:font-bold hover:cursor-pointer">Etc</li>
+        {categories.map((category) => (
+          <li
+            key={category}
+            className="py-2 hover:font-bold hover:cursor-pointer"
+          >
+            <Link
+              to={`/category/${category}`}
+              className="text-gray-700 hover:text-black"
+            >
+              {category}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
