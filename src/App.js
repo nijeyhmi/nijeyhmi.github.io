@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Main from "./pages/Main";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import PostList from "./pages/PostList";
+import PostDetail from "./pages/PostDetail";
+
 function App() {
   return (
     <Router>
@@ -11,12 +12,12 @@ function App() {
         <Header />
         <div className="flex">
           <Sidebar />
-          <Main />
+          <Routes>
+            <Route path="/" element={<PostList />} />
+            <Route path="/:categoryName" element={<PostList />} />
+            <Route path="/:categoryName/:postId" element={<PostDetail />} />
+          </Routes>
         </div>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/category/:categoryName" element={<PostList />} />
-        </Routes>
 
         <Footer />
       </div>
