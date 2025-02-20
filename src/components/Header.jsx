@@ -4,7 +4,7 @@ const Header = () => {
     <div className="w-full h-[44px] flex justify-between items-center px-10">
       <div>
         <Link to={`/`} className="text-gray-700 hover:text-black">
-          nijeyhmi
+          <h2 className="text-lg font-bold">nijeyhmi</h2>
         </Link>
       </div>
       <div className="flex">
