@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const PostDetail = () => {
   const { postId } = useParams();
@@ -8,14 +10,18 @@ const PostDetail = () => {
   useEffect(() => {
     fetch(`/posts/${postId}.md`)
       .then((res) => res.text())
-      .then((text) => setContent(text))
-      .catch((err) => console.error("Error loading post:", err));
+      .then(setContent)
+      .catch(console.error);
   }, [postId]);
 
   return (
     <div className="flex-1 p-8 mx-64">
-      <h1>{postId}</h1>
-      <p>{content}</p>
+      <div className="h-14 border-b mb-4">
+        <h1 className="text-4xl font-bold">{postId}</h1>
+      </div>
+      <div className="prose prose-md">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+      </div>
     </div>
   );
 };
