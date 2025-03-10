@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+const tags = ["js", "js-logic"];
+
 const PostDetail = () => {
   const { postId } = useParams();
   const [content, setContent] = useState("");
@@ -15,12 +17,20 @@ const PostDetail = () => {
   }, [postId]);
 
   return (
-    <div className="flex-1 p-8 mx-64">
-      <div className="h-14 border-b mb-4">
-        <h1 className="text-4xl font-bold">{postId}</h1>
-      </div>
-      <div className="prose prose-md">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+    <div className="flex p-8 justify-center">
+      <div className="w-[45%]">
+        <div className="border-b mb-4">
+          <h1 className="text-4xl font-bold mb-2">{postId}</h1>
+          <span className="text-gray-400">2025.03.10.</span>
+          <div className="flex mt-2 pb-5">
+            {tags.map((tag) => (
+              <div className="bg-gray-200 rounded-xl py-1 px-2 text-sm mr-2">{tag}</div>
+            ))}
+          </div>
+        </div>
+        <div className="prose prose-md mt-12">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+        </div>
       </div>
     </div>
   );
