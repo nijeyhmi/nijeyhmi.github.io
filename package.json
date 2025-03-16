@@ -1,7 +1,7 @@
 {
   "name": "nijeyhblog",
   "version": "0.1.0",
-  "homepage": "https://nijeyhmi.github.io/nijeyhmi.github.io/",
+  "homepage": "https://nijeyhmi.github.io/",
   "private": true,
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
