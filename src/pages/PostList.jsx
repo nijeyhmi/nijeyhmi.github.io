@@ -1,16 +1,33 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PostList = () => {
-  const { categoryName } = useParams();
   const [posts, setPosts] = useState();
 
   useEffect(() => {
-    fetch("./posts.json")
+    fetch(`${process.env.PUBLIC_URL}/posts.json`)
       .then((res) => res.json())
-      .then((data) => setPosts(data))
+      .then((data) => {
+        const sortedPosts = data.sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        );
+        setPosts(sortedPosts);
+      })
       .catch((err) => console.error("error loading post list:", err));
   }, []);
+
+  const stripMarkdown = (markdown) => {
+    return markdown
+      .replace(/!\[.*?\]\(.*?\)/g, "")
+      .replace(/\[([^\]]+)\]\(.*?\)/g, "$1")
+      .replace(/(`{1,3})(.*?)\1/g, "$2")
+      .replace(/>\s?/g, "")
+      .replace(/[*_~`]/g, "")
+      .replace(/^#+\s/gm, "")
+      .replace(/-{3,}/g, "")
+      .replace(/\n+/g, " ")
+      .trim();
+  };
 
   return (
     <div className="flex p-8 justify-center">
@@ -19,13 +36,19 @@ const PostList = () => {
         {posts?.map((post) => (
           <li key={post.id} className="mb-10">
             <Link to={`/post/${post.id}`}>
-              <h1 className="text-3xl font-bold mb-2 hover:text-gray-700">{post.title}</h1>
+              <h1 className="text-3xl font-bold mb-2 hover:text-gray-700">
+                {post.title}
+              </h1>
             </Link>
             <span className="text-gray-400">{post.date}</span>
-            <div className="my-2">{post.content}</div>
+            <div className="my-2">
+              {stripMarkdown(post.content).slice(1, 400) + "..."}
+            </div>
             <div className="flex">
               {post?.tags.map((tag) => (
-                <div className="bg-gray-200 rounded-xl py-1 px-2 text-sm mr-2">{tag}</div>
+                <div className="bg-gray-100 rounded-xl py-1 px-2 text-sm mr-2">
+                  {tag}
+                </div>
               ))}
             </div>
           </li>
