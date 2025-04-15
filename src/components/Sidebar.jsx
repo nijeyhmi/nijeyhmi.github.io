@@ -21,8 +21,12 @@ const Sidebar = ({ isOpen }) => {
         ))}
       </ul>
       <div className="flex justify-start space-x-4 pl-5 mb-28 border-t pt-5">
-        <MdOutlineMail className="w-6 h-6 mr-2 hover:cursor-pointer" />
-        <FaGithub className="w-6 h-6 mr-2 hover:cursor-pointer" />
+        <a href="mailto:nijeyhmi@gmail.com">
+          <MdOutlineMail className="w-6 h-6 mr-2 hover:cursor-pointer" />
+        </a>
+        <a href="https://github.com/nijeyhmi" target="_blank" rel="noopener noreferrer">
+          <FaGithub className="w-6 h-6 mr-2 hover:cursor-pointer" />
+        </a>
       </div>
     </div>
   );
