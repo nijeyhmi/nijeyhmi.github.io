@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PostDetail from '../../components/PostDetail';
+
+import { getPostsFromNotion } from '../../lib/notion';
+
+export async function getStaticPaths() {
+  const posts = await getPostsFromNotion(); // 첫 페이지만으로도 충분
+
+  return posts.map((post) => ({
+    params: { id: post.id }, // URL에 하이픈 제거한 ID 사용
+  }));
+}
+
+const { id } = Astro.params;
+
+
+// 예: 페이지 내용 가져오기
+import { getPostDetail } from '../../lib/notion';
+const content = await getPostDetail(id);
+---
+
+<Layout>
+  <PostDetail content={content} />
+</Layout>
