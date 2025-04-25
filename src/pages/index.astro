@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PostList from '../components/PostList';
+import { getPostsFromNotion } from '../lib/notion.js';
+
+const posts = await getPostsFromNotion(); 
+---
+
+<Layout>
+			<PostList posts={posts} />
+</Layout>

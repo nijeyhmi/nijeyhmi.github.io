@@ -1,0 +1,27 @@
+{
+  "name": "personal-blog",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.2.4",
+    "@astrojs/tailwind": "^4.0.0",
+    "@notionhq/client": "^2.2.4",
+    "@tailwindcss/typography": "^0.5.16",
+    "astro": "^4.0.0",
+    "fuse.js": "^6.6.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.1"
+  }
+}
