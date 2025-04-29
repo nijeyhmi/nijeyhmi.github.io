@@ -18,6 +18,8 @@ export async function getPostsFromNotion() {
       ],
     });
 
+    console.log('notion response::', JSON.stringify(response, null, 2));
+
     return response.results.map((page) => ({
       id: page.id,
       title: page.properties.title?.title?.[0]?.plain_text ?? '',
