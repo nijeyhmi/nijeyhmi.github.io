@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.2.4",
-    "@astrojs/tailwind": "^4.0.0",
+    "@astrojs/tailwind": "^6.0.2",
     "@notionhq/client": "^2.2.4",
     "@tailwindcss/typography": "^0.5.16",
     "astro": "^4.0.0",
