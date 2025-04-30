@@ -18,6 +18,7 @@ export async function getPostsFromNotion() {
       ],
     });
 
+    console.log('env NOTION_TOKEN:', import.meta.env.NOTION_TOKEN);
     console.log('notion response::', JSON.stringify(response, null, 2));
 
     return response.results.map((page) => ({
