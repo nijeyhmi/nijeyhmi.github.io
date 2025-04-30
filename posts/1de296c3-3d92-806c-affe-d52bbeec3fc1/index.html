@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.18"><title>NHYELOG.DEV</title><link rel="stylesheet" href="/_astro/index.CmmPaOd5.css"></head> <body data-astro-cid-sckkx6r4> <nav class="w-full h-[60px] sticky top-0 left-0 bg-white"><div class="max-w-[1140px] w-full h-full m-auto"><div class="w-[92%] h-full flex mx-auto"><div class="m-r-[24px] flex items-center"><a href="/"><h2 class="text-xl font-bold">NHYELOG</h2></a></div><div class="flex flex-1 max-h-full justify-end"><ul class="flex items-center p-0 m-0"><li class="hover:cursor-pointer py-0 px-[8px] h-full flex items-center"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-7 h-7 hover:cursor-pointer" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g id="Light"><g><path d="M12,18.09A6.09,6.09,0,1,1,18.09,12,6.1,6.1,0,0,1,12,18.09ZM12,6.91A5.09,5.09,0,1,0,17.09,12,5.1,5.1,0,0,0,12,6.91Z"></path><path d="M11.5,2.568v1.6a.5.5,0,1,0,1,0v-1.6a.5.5,0,1,0-1,0Z"></path><path d="M12.5,21.432v-1.6a.5.5,0,0,0-1,0v1.6a.5.5,0,1,0,1,0Z"></path><path d="M21.432,11.5h-1.6a.5.5,0,0,0,0,1h1.6a.5.5,0,1,0,0-1Z"></path><path d="M2.568,12.5h1.6a.5.5,0,1,0,0-1h-1.6a.5.5,0,1,0,0,1Z"></path><path d="M18.316,4.977l-.992.992-.141.141a.514.514,0,0,0-.146.353.508.508,0,0,0,.146.354.5.5,0,0,0,.354.146.515.515,0,0,0,.353-.146l.992-.992.141-.141a.515.515,0,0,0,.147-.354.508.508,0,0,0-.147-.353.5.5,0,0,0-.353-.147.522.522,0,0,0-.354.147Z"></path><path d="M5.684,19.023l.992-.992.141-.141a.514.514,0,0,0,.146-.353.508.508,0,0,0-.146-.354.5.5,0,0,0-.354-.146.515.515,0,0,0-.353.146l-.992.992-.141.141a.515.515,0,0,0-.147.354.508.508,0,0,0,.147.353.5.5,0,0,0,.353.147.522.522,0,0,0,.354-.147Z"></path><path d="M19.023,18.316l-.992-.992-.141-.141a.514.514,0,0,0-.353-.146.508.508,0,0,0-.354.146.5.5,0,0,0-.146.354.515.515,0,0,0,.146.353l.992.992.141.141a.515.515,0,0,0,.354.147.508.508,0,0,0,.353-.147.5.5,0,0,0,.147-.353.522.522,0,0,0-.147-.354Z"></path><path d="M4.977,5.684l.992.992.141.141a.514.514,0,0,0,.353.146.508.508,0,0,0,.354-.146.5.5,0,0,0,.146-.354.515.515,0,0,0-.146-.353l-.992-.992-.141-.141A.515.515,0,0,0,5.33,4.83a.508.508,0,0,0-.353.147.5.5,0,0,0-.147.353.522.522,0,0,0,.147.354Z"></path></g></g></svg></li></ul></div></div></div></nav>  <div class="max-w-full w-full h-full mx-auto"><div class="max-w-full w-full h-full mx-auto"><div class="flex items-start flex-row justify-center px-[24px]"><div class="w-[1050px] min-h-[100vh]"><div class="border-b mb-[40px] pt-[24px]"><h1 class="text-4xl font-bold mb-2">Puppeteer </h1><span class="text-gray-400">2025. 04. 23.</span><div class="flex mt-2 pb-5"><div class="bg-gray-200 rounded-xl py-1 px-2 text-sm mr-2">javascript</div></div></div><div class="mt-12 prose prose-neutral max-w-none"><h2>Puppeteer</h2>
+<p>구글 크롬의 DevTools Protocol을 통해 Chrome, 혹은 Chronium을 제어하기 위한 API 제공</p>
+<ul>
+<li>puppeteer는 하나의 브라우저를 갖고 default BrowserContext가 생성된다</li>
+<li>하나의 브라우저는 여러 개의 BrowserContext를 갖는다</li>
+</ul>
+<h3>Page.$()</h3>
+<p>page 내의 document.querySelector를 실행해줌</p>
+<p>Selector에 맞는 element가 없는 경우 null을 반환한다</p>
+<h3>Page.waitForNavigation()</h3>
+<p>page가 새로운 url로 이동하거나, reload가 되는 동안 대기</p>
+<h3>Page.waitForSelector()</h3>
+<p>page 내의 특정 Selector가 보일 때까지 대기</p>
+<p>이미 존재하는 경우 메서드 즉시 실행</p>
+<p>특정 밀리세컨드 이후에도 보이지 않으면 해당 함수를 throw</p>
+<h3>Page.evaluate()</h3>
+<p>page context 내의 함수를 평가하고 값을 반환한다</p>
+<p>함수가 Promise를 반환하는 page.evaluateHandle을 넘겨주면 promise가 값을 반환할 때까지 함수는 대기</p>
+<h2>FCP, LCP 계산</h2>
+<p><a href="https://addyosmani.com/blog/puppeteer-recipes/">bookmark</a></p>
+<pre><code class="language-javascript">const puppeteer = require(&#x27;puppeteer&#x27;);
+
+(async () =&gt; {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  const navigationPromise = page.waitForNavigation();
+  await page.goto(&#x27;https://pptr.dev&#x27;);
+
+  await navigationPromise;
+
+  let firstPaint = JSON.parse(
+    await page.evaluate(() =&gt;
+      JSON.stringify(performance.getEntriesByName(&#x27;first-paint&#x27;))
+    )
+  );
+
+  let firstContentfulPaint = JSON.parse(
+    await page.evaluate(() =&gt;
+      JSON.stringify(performance.getEntriesByName(&#x27;first-contentful-paint&#x27;))
+    )
+  );
+
+  console.log(`First paint: ${firstPaint[0].startTime}`);
+  console.log(`First paint: ${firstContentfulPaint[0].startTime}`);
+
+  await browser.close();
+})();
+</code></pre>
+<pre><code class="language-javascript">const puppeteer = require(&#x27;puppeteer&#x27;);
+const devices = require(&#x27;puppeteer/DeviceDescriptors&#x27;);
+
+const Good3G = {
+    &#x27;offline&#x27;: false,
+    &#x27;downloadThroughput&#x27;: 1.5 * 1024 * 1024 / 8,
+    &#x27;uploadThroughput&#x27;: 750 * 1024 / 8,
+    &#x27;latency&#x27;: 40
+};
+
+const phone = devices[&#x27;Nexus 5X&#x27;];
+
+function calcLCP() {
+    window.largestContentfulPaint = 0;
+
+    const observer = new PerformanceObserver((entryList) =&gt; {
+        const entries = entryList.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        window.largestContentfulPaint = lastEntry.renderTime || lastEntry.loadTime;
+    });
+
+    observer.observe({ type: &#x27;largest-contentful-paint&#x27;, buffered: true });
+
+    document.addEventListener(&#x27;visibilitychange&#x27;, () =&gt; {
+        if (document.visibilityState === &#x27;hidden&#x27;) {
+            observer.takeRecords();
+            observer.disconnect();
+            console.log(&#x27;LCP:&#x27;, window.largestContentfulPaint);
+        }
+    });
+}
+
+
+async function getLCP(url) {
+    const browser = await puppeteer.launch({
+        args: [&#x27;--no-sandbox&#x27;],
+        timeout: 10000
+    });
+
+    try {
+        const page = await browser.newPage();
+        const client = await page.target().createCDPSession();
+
+        await client.send(&#x27;Network.enable&#x27;);
+        await client.send(&#x27;ServiceWorker.enable&#x27;);
+        await client.send(&#x27;Network.emulateNetworkConditions&#x27;, Good3G);
+        await client.send(&#x27;Emulation.setCPUThrottlingRate&#x27;, { rate: 4 });
+        await page.emulate(phone);
+
+        await page.evaluateOnNewDocument(calcLCP);
+        await page.goto(url, { waitUntil: &#x27;load&#x27;, timeout: 60000 });
+
+        let lcp = await page.evaluate(() =&gt; {
+            return window.largestContentfulPaint;
+        });
+        return lcp;
+        browser.close();
+    } catch (error) {
+        console.log(error);
+        browser.close();
+    }
+}
+
+getLCP(&quot;https://pptr.dev&quot;).then(lcp =&gt; console.log(&quot;LCP is: &quot; + lcp));
+</code></pre>
+<p><a href="https://stackoverflow.com/questions/63638074/wait-for-html-content-to-measure-first-contentful-paint">bookmark</a></p>
+<pre><code class="language-javascript">const puppeteer = require(&#x27;puppeteer&#x27;);
+
+(async () =&gt; {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  const navigationPromise = page.waitForNavigation();
+
+  page.goto(&#x27;file://path/to/empty.html&#x27;);
+
+  await navigationPromise;
+
+  page.setContent(`[ Custom HTML String ]`);
+
+  // I would like to measure this after the HTML changes
+  const firstContentfulPaint = JSON.parse(
+    await page.evaluate(() =&gt;
+      JSON.stringify(performance.getEntriesByName(&#x27;first-contentful-paint&#x27;))
+    )
+  );
+
+  console.log(`First paint: ${firstContentfulPaint[0].startTime}`);
+
+  await browser.close();
+})();
+</code></pre></div></div></div></div></div>  <div class="w-full bg-white shadow-md px-6 fixed bottom-0 right-0 z-10 bg-gray-100 py-2"><div class="container mx-auto flex flex-col items-center"><p class="text-sm">© <!-- -->2025<!-- --> nijeyhmi&#x27;s Blog. All rights reserved.</p><button class="absolute right-4 bottom-[3rem] w-10 h-10 border text-gray-300 rounded-full shadow-md flex items-center justify-center focus:outline-none">⬆</button></div></div> </body></html>

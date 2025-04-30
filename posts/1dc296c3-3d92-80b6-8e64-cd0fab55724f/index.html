@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.18"><title>NHYELOG.DEV</title><link rel="stylesheet" href="/_astro/index.CmmPaOd5.css"></head> <body data-astro-cid-sckkx6r4> <nav class="w-full h-[60px] sticky top-0 left-0 bg-white"><div class="max-w-[1140px] w-full h-full m-auto"><div class="w-[92%] h-full flex mx-auto"><div class="m-r-[24px] flex items-center"><a href="/"><h2 class="text-xl font-bold">NHYELOG</h2></a></div><div class="flex flex-1 max-h-full justify-end"><ul class="flex items-center p-0 m-0"><li class="hover:cursor-pointer py-0 px-[8px] h-full flex items-center"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-7 h-7 hover:cursor-pointer" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g id="Light"><g><path d="M12,18.09A6.09,6.09,0,1,1,18.09,12,6.1,6.1,0,0,1,12,18.09ZM12,6.91A5.09,5.09,0,1,0,17.09,12,5.1,5.1,0,0,0,12,6.91Z"></path><path d="M11.5,2.568v1.6a.5.5,0,1,0,1,0v-1.6a.5.5,0,1,0-1,0Z"></path><path d="M12.5,21.432v-1.6a.5.5,0,0,0-1,0v1.6a.5.5,0,1,0,1,0Z"></path><path d="M21.432,11.5h-1.6a.5.5,0,0,0,0,1h1.6a.5.5,0,1,0,0-1Z"></path><path d="M2.568,12.5h1.6a.5.5,0,1,0,0-1h-1.6a.5.5,0,1,0,0,1Z"></path><path d="M18.316,4.977l-.992.992-.141.141a.514.514,0,0,0-.146.353.508.508,0,0,0,.146.354.5.5,0,0,0,.354.146.515.515,0,0,0,.353-.146l.992-.992.141-.141a.515.515,0,0,0,.147-.354.508.508,0,0,0-.147-.353.5.5,0,0,0-.353-.147.522.522,0,0,0-.354.147Z"></path><path d="M5.684,19.023l.992-.992.141-.141a.514.514,0,0,0,.146-.353.508.508,0,0,0-.146-.354.5.5,0,0,0-.354-.146.515.515,0,0,0-.353.146l-.992.992-.141.141a.515.515,0,0,0-.147.354.508.508,0,0,0,.147.353.5.5,0,0,0,.353.147.522.522,0,0,0,.354-.147Z"></path><path d="M19.023,18.316l-.992-.992-.141-.141a.514.514,0,0,0-.353-.146.508.508,0,0,0-.354.146.5.5,0,0,0-.146.354.515.515,0,0,0,.146.353l.992.992.141.141a.515.515,0,0,0,.354.147.508.508,0,0,0,.353-.147.5.5,0,0,0,.147-.353.522.522,0,0,0-.147-.354Z"></path><path d="M4.977,5.684l.992.992.141.141a.514.514,0,0,0,.353.146.508.508,0,0,0,.354-.146.5.5,0,0,0,.146-.354.515.515,0,0,0-.146-.353l-.992-.992-.141-.141A.515.515,0,0,0,5.33,4.83a.508.508,0,0,0-.353.147.5.5,0,0,0-.147.353.522.522,0,0,0,.147.354Z"></path></g></g></svg></li></ul></div></div></div></nav>  <div class="max-w-full w-full h-full mx-auto"><div class="max-w-full w-full h-full mx-auto"><div class="flex items-start flex-row justify-center px-[24px]"><div class="w-[1050px] min-h-[100vh]"><div class="border-b mb-[40px] pt-[24px]"><h1 class="text-4xl font-bold mb-2">Vue 프로젝트에 Vite 도입하기</h1><span class="text-gray-400">2025. 04. 21.</span><div class="flex mt-2 pb-5"><div class="bg-gray-200 rounded-xl py-1 px-2 text-sm mr-2">Vue</div></div></div><div class="mt-12 prose prose-neutral max-w-none"><p>회사에서 진행하는 프로젝트의 서버 구동 속도를 높이기 위해 Vite를 도입하기로 했다.</p>
+<p><a href="https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/">bookmark</a></p>
+<p>해당 블로그를 참고하여 진행했다.</p>
+<h2>1. Dependencies 업데이트</h2>
+<p>package.json에 있는 vue/cli 관련 dependencies를 모두 제거한다</p>
+<p>sass-loader도 마찬가지</p>
+<pre><code class="language-css">// package.json
+&quot;@vue/cli-plugin-babel&quot;: &quot;~4.5.0&quot;, // remove
+&quot;@vue/cli-plugin-eslint&quot;: &quot;~4.5.0&quot;, // remove
+&quot;@vue/cli-plugin-router&quot;: &quot;~4.5.0&quot;, // remove
+&quot;@vue/cli-plugin-vuex&quot;: &quot;~4.5.0&quot;, // remove
+&quot;@vue/cli-service&quot;: &quot;~4.5.0&quot;, // remove
+
+&quot;sass-loader&quot;: &quot;^8.0.2&quot; // remove
+</code></pre>
+<p>이후 vite 관련 dependencies를 추가한다</p>
+<pre><code class="language-css">// package.json
+&quot;@vitejs/plugin-vue&quot;: &quot;^1.6.1&quot;,
+&quot;vite&quot;: &quot;^2.5.4.&quot;,
+</code></pre>
+<p>vue2 프로젝트를 마이그레이션하는 경우는 vue2용 유지관리 vite 플러그인도 추가해야함(vue3의 경우 해당사항 없음)</p>
+<pre><code class="language-css">// package.json
+&quot;vite-plugin-vue2&quot;: &quot;1.9.0&quot;
+</code></pre>
+<p>마지막으로 vite vue plugin이 vue template을 조절할 수 있도록 vue template compiler를 삭제한다</p>
+<pre><code class="language-css">// package.json
+&quot;vue-template-compiler&quot;: &quot;^2.6.11&quot; //remove
+</code></pre>
+<h2>2. 모던 브라우저 지원</h2>
+<p>익스플로러와 같은 오래된 브라우저를 Vite는 지원하지 않는다 → 이를 제외함으로써 빌드를 더 빨리 할 수 있도록 함</p>
+<p>즉, Babel과 같은 플러그인이 삭제되어야 함</p>
+<p>package.json에서 babel 및 core-js 삭제</p>
+<pre><code class="language-sql">// package.json
+&quot;babel-eslint&quot;: &quot;^10.1.0&quot;, // remove
+&quot;core-js&quot;: &quot;^3.6.5&quot;, // remove
+</code></pre>
+<p>eslint를 사용 중이라면 .eslintrc 파일도 수정</p>
+<pre><code class="language-sql">// .eslintrc
+// remove
+parserOptions: {
+    parser: &quot;babel-eslint&quot;,
+},
+</code></pre>
+<p>env가 es2021 이후의 브라우저만 지원하도록 eslint가 잡아낼 수 있도록 세팅</p>
+<pre><code class="language-sql">// .eslintrc
+env: {
+    node: true, // remove
+    es2021: true,
+}
+</code></pre>
+<h2>3. Vite Config 추가</h2>
+<p><code>npm init vite@latest</code> 명령어 사용 시 생성되는 vite.config.js를 루트 디렉토리에 만들어 준다</p>
+<pre><code class="language-sql">// vite.config.js
+
+import { defineConfig } from &#x27;vite&#x27;
+import vue from &#x27;@vitejs/plugin-vue&#x27;
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()]
+})
+</code></pre>
+<p>vue2를 사용 중이라면 @vitejs/plugin-vue 대신 vite-plugin-vue2를 사용해야 한다</p>
+<p>(vue3 사용 시 생략 가능)</p>
+<pre><code class="language-sql">// vite.config.js
+import vue from &#x27;@vitejs/plugin-vue&#x27; // remove
+import { createVuePlugin as vue } from &quot;vite-plugin-vue2&quot;;
+</code></pre>
+<p><code>@</code> alias 사용을 위한 옵션 추가</p>
+<pre><code class="language-sql">// vite.config.js
+//...
+const path = require(&quot;path&quot;);
+export default defineConfig({
+  //...
+  resolve: {
+    alias: {
+      &quot;@&quot;: path.resolve(__dirname, &quot;./src&quot;),
+    },
+  },
+});
+</code></pre>
+<h2>4. index.html 위치 변경</h2>
+<p>public 디렉토리 내에 위치한 index.html을 루트 디렉토리로 이동</p>
+<p>파일도 수정 필요</p>
+<p>변수들을 모두 하드코딩으로 바꾸어준다</p>
+<pre><code class="language-sql">// index.html
+
+//...
+&lt;!--remove--&gt;
+&lt;link rel=&quot;icon&quot; href=&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;&gt;
+&lt;!--add--&gt;
+&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot;&gt;
+
+//...
+&lt;!--remove--&gt;
+&lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt; 
+&lt;!--add--&gt;
+&lt;title&gt;Hard Coded Title&lt;/title&gt;
+
+//...
+&lt;!--remove--&gt;
+&lt;strong&gt;We&#x27;re sorry but &lt;%= htmlWebpackPlugin.options.title %&gt; doesn&#x27;t work properly without JavaScript enabled. Please enable it to continue.&lt;/strong&gt;
+&lt;!--add--&gt;
+&lt;strong&gt;We&#x27;re sorry but this app doesn&#x27;t work properly without JavaScript enabled. Please enable it to continue.&lt;/strong&gt;
+</code></pre>
+<p>수정 후 main.js도 명시적으로 추가해줘야 한다</p>
+<pre><code class="language-sql">&lt;script type=&quot;module&quot; src=&quot;/src/main.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2>5. Scripts 업데이트</h2>
+<p>package.json의 scripts 명령어 vite 관련 명령어로 수정</p>
+<pre><code class="language-sql">// package.json
+&quot;serve&quot;: &quot;vue-cli-service serve&quot;, // remove
+&quot;build&quot;: &quot;vue-cli-service build&quot;, // remove
+&quot;dev&quot;: &quot;vite&quot;,
+&quot;build&quot;: &quot;vite build&quot;,
+&quot;serve&quot;: &quot;vite preview&quot;,
+</code></pre>
+<p>eslint 명령어도 수정</p>
+<pre><code class="language-sql">&quot;lint&quot;: &quot;eslint --ext .js,.vue --ignore-path .gitignore --fix src&quot;
+</code></pre>
+<h2>6. 환경변수 수정</h2>
+<p>route의 index.js 파일 수정</p>
+<p>더이상 process 변수에서 값을 가져올 수 없다</p>
+<pre><code class="language-sql">// router/index.js
+base: process.env.BASE_URL, //remove
+base: import.meta.env.BASE_URL,
+</code></pre>
+<p>또한, <code>VUE_APP_</code>  prefix를 사용중이라면 <code>VITE_</code> prefix로 수정 필요</p>
+<p>이건 건너뛰어도 되지 않나 싶어서 안해봤는데 아예 env 변수를 읽어오질 못함</p>
+<h2>7. SFC 컴포넌트에 .vue extension 추가</h2>
+<p>.vue 파일을 import 중이라면 뒤에 확장자를 붙여주기</p>
+<pre><code class="language-sql">// Home.vue
+import HelloWorld from &quot;@/components/HelloWorld.vue&quot;; // .vue is required
+</code></pre>
+<p>vite.config.js에도 확장자 옵션을 추가</p>
+<pre><code class="language-sql">// vite.config.js
+//...
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    extensions: [&#x27;.mjs&#x27;, &#x27;.js&#x27;, &#x27;.ts&#x27;, &#x27;.jsx&#x27;, &#x27;.tsx&#x27;, &#x27;.json&#x27;, &#x27;.vue&#x27;],
+    //...
+  },
+});
+</code></pre>
+<h2>8. Magic Comment 지우기</h2>
+<p>webpack 관련 구체적 코멘트가 동적 import를 해주는데, vite에서는 더이상 지원하지 않음</p>
+<pre><code class="language-sql">// router/index.js
+import(
+    /* webpackChunkName: &quot;about&quot; */  // remove
+    &quot;../views/About.vue&quot;
+),
+</code></pre></div></div></div></div></div>  <div class="w-full bg-white shadow-md px-6 fixed bottom-0 right-0 z-10 bg-gray-100 py-2"><div class="container mx-auto flex flex-col items-center"><p class="text-sm">© <!-- -->2025<!-- --> nijeyhmi&#x27;s Blog. All rights reserved.</p><button class="absolute right-4 bottom-[3rem] w-10 h-10 border text-gray-300 rounded-full shadow-md flex items-center justify-center focus:outline-none">⬆</button></div></div> </body></html>

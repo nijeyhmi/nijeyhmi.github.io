@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.18"><title>NHYELOG.DEV</title><link rel="stylesheet" href="/_astro/index.CmmPaOd5.css"></head> <body data-astro-cid-sckkx6r4> <nav class="w-full h-[60px] sticky top-0 left-0 bg-white"><div class="max-w-[1140px] w-full h-full m-auto"><div class="w-[92%] h-full flex mx-auto"><div class="m-r-[24px] flex items-center"><a href="/"><h2 class="text-xl font-bold">NHYELOG</h2></a></div><div class="flex flex-1 max-h-full justify-end"><ul class="flex items-center p-0 m-0"><li class="hover:cursor-pointer py-0 px-[8px] h-full flex items-center"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-7 h-7 hover:cursor-pointer" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g id="Light"><g><path d="M12,18.09A6.09,6.09,0,1,1,18.09,12,6.1,6.1,0,0,1,12,18.09ZM12,6.91A5.09,5.09,0,1,0,17.09,12,5.1,5.1,0,0,0,12,6.91Z"></path><path d="M11.5,2.568v1.6a.5.5,0,1,0,1,0v-1.6a.5.5,0,1,0-1,0Z"></path><path d="M12.5,21.432v-1.6a.5.5,0,0,0-1,0v1.6a.5.5,0,1,0,1,0Z"></path><path d="M21.432,11.5h-1.6a.5.5,0,0,0,0,1h1.6a.5.5,0,1,0,0-1Z"></path><path d="M2.568,12.5h1.6a.5.5,0,1,0,0-1h-1.6a.5.5,0,1,0,0,1Z"></path><path d="M18.316,4.977l-.992.992-.141.141a.514.514,0,0,0-.146.353.508.508,0,0,0,.146.354.5.5,0,0,0,.354.146.515.515,0,0,0,.353-.146l.992-.992.141-.141a.515.515,0,0,0,.147-.354.508.508,0,0,0-.147-.353.5.5,0,0,0-.353-.147.522.522,0,0,0-.354.147Z"></path><path d="M5.684,19.023l.992-.992.141-.141a.514.514,0,0,0,.146-.353.508.508,0,0,0-.146-.354.5.5,0,0,0-.354-.146.515.515,0,0,0-.353.146l-.992.992-.141.141a.515.515,0,0,0-.147.354.508.508,0,0,0,.147.353.5.5,0,0,0,.353.147.522.522,0,0,0,.354-.147Z"></path><path d="M19.023,18.316l-.992-.992-.141-.141a.514.514,0,0,0-.353-.146.508.508,0,0,0-.354.146.5.5,0,0,0-.146.354.515.515,0,0,0,.146.353l.992.992.141.141a.515.515,0,0,0,.354.147.508.508,0,0,0,.353-.147.5.5,0,0,0,.147-.353.522.522,0,0,0-.147-.354Z"></path><path d="M4.977,5.684l.992.992.141.141a.514.514,0,0,0,.353.146.508.508,0,0,0,.354-.146.5.5,0,0,0,.146-.354.515.515,0,0,0-.146-.353l-.992-.992-.141-.141A.515.515,0,0,0,5.33,4.83a.508.508,0,0,0-.353.147.5.5,0,0,0-.147.353.522.522,0,0,0,.147.354Z"></path></g></g></svg></li></ul></div></div></div></nav>  <div class="max-w-full w-full h-full mx-auto"><div class="max-w-full w-full h-full mx-auto"><div class="flex items-start flex-row justify-center px-[24px]"><div class="w-[1050px] min-h-[100vh]"><div class="border-b mb-[40px] pt-[24px]"><h1 class="text-4xl font-bold mb-2">Lexical Editor</h1><span class="text-gray-400">2025. 04. 23.</span><div class="flex mt-2 pb-5"><div class="bg-gray-200 rounded-xl py-1 px-2 text-sm mr-2">javascript</div></div></div><div class="mt-12 prose prose-neutral max-w-none"><p><a href="https://lexical.dev/">bookmark</a></p>
+<h2>Lexical Editor</h2>
+<p>안정성, 접근성, 성능에 중점을 둔 확장 가능한 JavaScript 웹 텍스트 편집기 프레임워크</p>
+<p>contentEditable 엘리먼트에 붙여서 작동 → DOM에 관련된 엣지 케이스를 걱정할 필요없이 사용 가능</p>
+<p>대부분의 케이스에서 DOM과 상호작용할 필요가 없음(커스텀 노드를 만들지 않는 이상)</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/c144bb06-2188-4dd4-a240-b42782f91a70/ab0c216f-9a2f-417c-b961-7e7a38af4972/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466XI7JQEW4%2F20250430%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250430T023213Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAIaCXVzLXdlc3QtMiJGMEQCICyRVSI%2FizDT%2FVfjs22drCF9Oe%2FEcQlch3B9pP3YQXCuAiBi4VPoaE7YtfV2KAztHhi3hEOVzoxEgWjPvDcbawRtGCqIBAib%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDYzNzQyMzE4MzgwNSIMxA8k%2F%2FZOgo6GuP6%2FKtwDfd1wpxc5fsFa1%2FUSolEdoCzlc3Ojf%2BsU2%2FQfSJGqvcMepn86QGasvSCTcNnPOmEMA9iZ154siYhd3ESeEq9yE9zLVfvhbLsJMTa1FK4ui8kUxoErcISnsBrZ2idS9gtDksf44a%2BK9R%2BphsI0stHirM1sH%2FKNQwfPeYE53Bm9Ekq4Wh0miTZms1nitldCZk5TiqEqwHml%2BTQtsGK1kdwDlBLhtboJyGFwNZ3SEO0zQ3e3%2Fb20YsXT%2BGLm1%2Bp%2FvEwxds89JqS9%2B6O%2BccL7hM5s8%2Fi1s6OWCrAqSDS%2B14zhUNc0wjyN18XdxRNhA924OO8AmCweVSx%2BUlgOIDHoVxAOeg6F21l%2FMEqTUs%2B5%2BnIMp1q%2Fh4lt1dSVQ4nNbToSkJRkgD7oPP%2FKTS8pD08%2BWsz7h0fa410pqkoV%2FSa66iuOoEZdEEh4e4ylj0iDW7sSDGeQ9VlmrOWxCBlelTVd1CY4Sz3KAGbIfKBt132XMw1ky%2B1ClMlCag1EL9nzqOTBq7q6%2FSxOcZwVgjDWVi%2Fso3nyLye%2ByRMCltWfIASKWLN1UjQ%2BcjXbQePzTp10QPUP2fT0clx62RDbk3Z%2FENqIKbyMS1kkjQeI5%2F2mv7Anb0z9EElqPLNK%2BelxpXWT6O4wv4fGwAY6pgHwUUET7g%2BGBnROXvYcauz8wthHJGfw3FGB%2FpAllYlwr%2B4ljIX1aNNCD0gxQkd4%2BlXH6liLIxZIpsGXsFR1iA7Y4YBF5ACiUVFcIUCq2qVLNH5HA%2BfYZYhPIrmtUHKInKztVCG1%2FH27s5uvBiCj%2BeI%2FvR5wieC5d5rB4myM%2F9CMFdag8gxh3bBeNrZrZ8HHt08SKfKNMdtV8lO%2F5ojHsHE%2FWPM05%2FkE&amp;X-Amz-Signature=1490eea403434006665ab47ba9de3bcc24a91b576d1016f93e481f38b0d411e2&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject" alt="image.png"/></p>
+<h3>Editor instances</h3>
+<ul>
+<li>contentdeitable DOM 엘리먼트 붙이기 가능</li>
+<li>이벤트 리스너 및 커맨드 등록 가능</li>
+<li>EditorState 업데이트 가능</li>
+<li>createEditor() 함수를 통해 생성</li>
+</ul>
+<h3>Editor States</h3>
+<ul>
+<li>a Lexical Node Tree</li>
+<li>a Lexical Selection object</li>
+</ul>
+<p>한 번 생성되면 불변, 업데이트를 위해서는 editor.update를 사용해야 함</p>
+<p>→ 노드 변환이나 핸들러를 이용해서도 업데이트 가능</p>
+<p>현재 상태를 조회하기 위해서는 editor.getEditorState()를 사용</p>
+<p>상태는 JSON으로 serialize되며 editor.parseEditorState()를 통해 병렬화 가능</p>
+<h3>Reading and Updating Editor State</h3>
+<ul>
+<li>update<!-- -->
+<ul>
+<li><code>editor.update(() ⇒ {})</code></li>
+<li>중첩 업데이트 및 읽기 작업은 허용하지만, 업데이트는 읽기에 중첩되어서는 안되며, 읽기 또한 업데이트에 중첩되어서는 안됨</li>
+</ul>
+</li>
+<li>read<!-- -->
+<ul>
+<li><code>editor.read(() ⇒ {})</code></li>
+<li><code>editor.getEditorState().read(() ⇒ {})</code></li>
+</ul>
+</li>
+</ul>
+<p>context(update, read)에 호출되는 함수의 경우 <code>$</code> prefix 사용을 권장</p>
+<p>→ 클로저는 동기적이어야 함. Editor State에 접근할 수 있는 유일한 곳이기 때문</p>
+<p>모든 렉시컬 노드는 Editor State에 독립적이다.</p>
+<h3>DOM Reconciler</h3>
+<p>Lexical에는 Editor state들을 가져오는 자체적인 DOM Reconciler가 있음</p>
+<h3>Listeners, Node Transforms and Commands</h3>
+<p>업데이트 호출 외의 작업은 대부분 리스너, 노드 변환 및 명령을 통해 이뤄짐</p>
+<p>모두 <code>register</code> prefix가 붙어있음</p>
+<ul>
+<li><code>createCommand()</code> 커맨드 생성</li>
+<li><code>editor.dispatchCommand(command, payload)</code> 커맨드 dispatch</li>
+<li><code>editor.registerCommand(command, handler, priority)</code> 커맨드 핸들링</li>
+</ul>
+<h2>Getting Started with React</h2>
+<pre><code class="language-javascript">npm install --save lexical @lexical/react
+</code></pre>
+<p>라이브러리 설치 후 lexical, @lexical/react를 import해서 사용</p>
+<pre><code class="language-javascript">import {$getRoot, $getSelection} from &#x27;lexical&#x27;;
+
+import {useEffect} from &#x27;react&#x27;;
+
+
+import {AutoFocusPlugin} from &#x27;@lexical/react/LexicalAutoFocusPlugin&#x27;;
+import {LexicalComposer} from &#x27;@lexical/react/LexicalComposer&#x27;;
+import {RichTextPlugin} from &#x27;@lexical/react/LexicalRichTextPlugin&#x27;;
+import {ContentEditable} from &#x27;@lexical/react/LexicalContentEditable&#x27;;
+import {HistoryPlugin} from &#x27;@lexical/react/LexicalHistoryPlugin&#x27;;
+import {LexicalErrorBoundary} from &#x27;@lexical/react/LexicalErrorBoundary&#x27;;
+
+
+const theme = {
+  // Theme styling goes here
+  //...
+}
+
+// Catch any errors that occur during Lexical updates and log them
+// or throw them as needed. If you don&#x27;t throw them, Lexical will
+// try to recover gracefully without losing user data.
+function onError(error) {
+  console.error(error);
+}
+
+function Editor() {
+  const initialConfig = {
+    namespace: &#x27;MyEditor&#x27;,
+    theme,
+    onError,
+  };
+
+  return (
+    &lt;LexicalComposer initialConfig={initialConfig}&gt;
+      &lt;RichTextPlugin
+        contentEditable={
+          &lt;ContentEditable
+            aria-placeholder={&#x27;Enter some text...&#x27;}
+            placeholder={&lt;div&gt;Enter some text...&lt;/div&gt;}
+          /&gt;
+        }
+        ErrorBoundary={LexicalErrorBoundary}
+      /&gt;
+      &lt;HistoryPlugin /&gt;
+      &lt;AutoFocusPlugin /&gt;
+    &lt;/LexicalComposer&gt;
+  );
+}
+</code></pre>
+<ul>
+<li><code>ToolbarPlugin</code> text formatting ui 렌더링</li>
+<li><code>TreeViewPlugin</code> 에디터 하단에 디버깅 뷰를 트리 노드 구조로 렌더링</li>
+</ul>
+<p>css 관련 설정을 editorConfig에 넣어줘야 ui 확인이 가능함</p>
+<pre><code class="language-javascript">//App.tsx
+const editorConfig = {
+  html: {
+    export: exportMap,
+    import: constructImportMap(),
+  },
+  namespace: &#x27;React.js Demo&#x27;,
+  nodes: [ParagraphNode, TextNode],
+  onError(error: Error) {
+    throw error;
+  },
+  theme: ExampleTheme,
+};
+
+//ExampleTheme.ts
+export default {
+  code: &#x27;editor-code&#x27;,
+  heading: {
+    h1: &#x27;editor-heading-h1&#x27;,
+    h2: &#x27;editor-heading-h2&#x27;,
+    h3: &#x27;editor-heading-h3&#x27;,
+    h4: &#x27;editor-heading-h4&#x27;,
+    h5: &#x27;editor-heading-h5&#x27;,
+  },
+  image: &#x27;editor-image&#x27;,
+  link: &#x27;editor-link&#x27;,
+  list: {
+    listitem: &#x27;editor-listitem&#x27;,
+    nested: {
+      listitem: &#x27;editor-nested-listitem&#x27;,
+    },
+    ol: &#x27;editor-list-ol&#x27;,
+    ul: &#x27;editor-list-ul&#x27;,
+  },
+  ltr: &#x27;ltr&#x27;,
+  paragraph: &#x27;editor-paragraph&#x27;,
+  placeholder: &#x27;editor-placeholder&#x27;,
+  quote: &#x27;editor-quote&#x27;,
+  rtl: &#x27;rtl&#x27;,
+  text: {
+    bold: &#x27;editor-text-bold&#x27;,
+    code: &#x27;editor-text-code&#x27;,
+    hashtag: &#x27;editor-text-hashtag&#x27;,
+    italic: &#x27;editor-text-italic&#x27;,
+    overflowed: &#x27;editor-text-overflowed&#x27;,
+    strikethrough: &#x27;editor-text-strikethrough&#x27;,
+    underline: &#x27;editor-text-underline&#x27;,
+    underlineStrikethrough: &#x27;editor-text-underlineStrikethrough&#x27;,
+  },
+};
+</code></pre>
+<h3>Theming</h3>
+<p>에디터 생성 시 css 클래스명이 매핑된 커스텀 객체를 제공하여 테마를 생성하도록 함</p>
+<pre><code class="language-javascript">const exampleTheme = {
+  ltr: &#x27;ltr&#x27;,
+  rtl: &#x27;rtl&#x27;,
+  paragraph: &#x27;editor-paragraph&#x27;,
+};
+//css파일
+.ltr {
+  text-align: left;
+}
+
+.rtl {
+  text-align: right;
+}
+
+.editor-placeholder {
+  color: #999;
+  overflow: hidden;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.editor-paragraph {
+  margin: 0 0 15px 0;
+  position: relative;
+}
+</code></pre>
+<p>LexicalComposer 컴포넌트에 커스텀 객체를 initialConfig로 제공하면 사용 가능</p>
+<h3>Creating a Plugin</h3>
+<p>기본 node를 확장해서 만들거나 node를 override해서 만들 수 있음</p>
+<ul>
+<li>기본 노드 확장<!-- -->
+<ul>
+<li><code>ElementNode</code> 다른 노드들의 부모 노드로 사용</li>
+<li><code>TextNode</code> 텍스트를 포함한 리프 타입 노드(자식 엘리먼트를 못 가짐)</li>
+<li><code>DecoratorNode</code> 에디터 내에 임의의 뷰를 넣는 것에 유용함</li>
+</ul>
+</li>
+<li>노드 override<!-- -->
+<ul>
+<li>내장되어 있는 노드의 행동을 확장시킬 때 유용함</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-javascript">export class EmojiNode extends TextNode {
+  __unifiedID: string;
+
+  static getType(): string {
+    return &#x27;emoji&#x27;;
+  }
+
+  static clone(node: EmojiNode): EmojiNode {
+    return new EmojiNode(node.__unifiedID, node.__key);
+  }
+
+  constructor(unifiedID: string, key?: NodeKey) {
+    const unicodeEmoji = /*...*/;
+    super(unicodeEmoji, key);
+
+    this.__unifiedID = unifiedID.toLowerCase();
+  }
+
+  /**
+  * DOM that will be rendered by browser within contenteditable
+  * This is what Lexical renders
+  */
+  createDOM(_config: EditorConfig): HTMLElement {
+    const dom = document.createElement(&#x27;span&#x27;);
+    dom.className = &#x27;emoji-node&#x27;;
+    dom.style.backgroundImage = `url(&#x27;${BASE_EMOJI_URI}/${this.__unifiedID}.png&#x27;)`;
+    dom.innerText = this.__text;
+
+    return dom;
+  }
+
+  static importJSON(serializedNode: SerializedEmojiNode): EmojiNode {
+    return $createEmojiNode(serializedNode.unifiedID).updateFromJSON(serializedNode);
+  }
+
+  exportJSON(): SerializedEmojiNode {
+    return {
+      ...super.exportJSON(),
+      unifiedID: this.__unifiedID,
+    };
+  }
+}
+</code></pre>
+<ul>
+<li>
+<p><code>constructor(…) + class props</code></p>
+<p>노드 내에 커스텀 데이터 저장 가능, 커스텀 매개변수 받기 가능</p>
+</li>
+<li>
+<p><code>getType()</code> &amp; <code>clone(…)</code></p>
+<p>노드 타입 식별 및 복제 동작 커스텀 가능</p>
+</li>
+<li>
+<p><code>importJSON(…)</code> &amp; <code>exportJSON()</code></p>
+<p>데이터를 JSON 형태로 import, export 가능</p>
+</li>
+<li>
+<p><code>createDOM(…)</code></p>
+</li>
+</ul></div></div></div></div></div>  <div class="w-full bg-white shadow-md px-6 fixed bottom-0 right-0 z-10 bg-gray-100 py-2"><div class="container mx-auto flex flex-col items-center"><p class="text-sm">© <!-- -->2025<!-- --> nijeyhmi&#x27;s Blog. All rights reserved.</p><button class="absolute right-4 bottom-[3rem] w-10 h-10 border text-gray-300 rounded-full shadow-md flex items-center justify-center focus:outline-none">⬆</button></div></div> </body></html>
