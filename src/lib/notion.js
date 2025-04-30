@@ -8,6 +8,9 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export async function getPostsFromNotion() {
   try {
+    console.log('🧪 NOTION_TOKEN =', import.meta.env.NOTION_TOKEN);
+    console.log('🧪 DB_ID =', import.meta.env.NOTION_DATABASE_ID);
+
     const response = await notion.databases.query({
       database_id: import.meta.env.NOTION_DATABASE_ID,
       sorts: [
@@ -18,7 +21,6 @@ export async function getPostsFromNotion() {
       ],
     });
 
-    console.log('env NOTION_TOKEN:', import.meta.env.NOTION_TOKEN);
     console.log('notion response::', JSON.stringify(response, null, 2));
 
     return response.results.map((page) => ({
