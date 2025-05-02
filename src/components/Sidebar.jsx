@@ -1,5 +1,5 @@
-import { FaGithub } from 'react-icons/fa';
-import { FaLinkedin } from 'react-icons/fa';
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 const Sidebar = ({ tags, recommendedPosts }) => {
   return (
     <div className="mb-[100px] pt-0 px-[24px] pb-[50px] border-l-2">
@@ -46,10 +46,13 @@ const Sidebar = ({ tags, recommendedPosts }) => {
               <div className="inline-flex flex-col justify-start">
                 <span className="font-bold">녜진(nijeyhmi)</span>
                 <div className="inline-flex flex-row mt-[12px]">
-                  <a href="">
+                  <a href="https://github.com/nijeyhmi?tab=repositories">
                     <FaGithub className="w-6 h-6 hover:cursor-pointer" />
                   </a>
-                  <a href="" className="ml-[6px]">
+                  <a
+                    href="https://www.linkedin.com/in/%ED%98%9C%EC%A7%84-%EA%B6%8C-b55915194/"
+                    className="ml-[6px]"
+                  >
                     <FaLinkedin className="w-6 h-6 hover:cursor-pointer" />
                   </a>
                 </div>
