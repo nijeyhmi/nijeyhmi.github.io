@@ -1,14 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Container from '../components/Container';
-import { getPostsFromNotion } from '../lib/notion.js';
-
-const allPosts = await getPostsFromNotion();
-const posts = allPosts;
-const recommendedPosts = allPosts.filter(post => post.isRecommended);
 ---
 
 <Layout>
-	<Container posts={posts} recommendedPosts={recommendedPosts} />
-
+	<Container client:load />
 </Layout>

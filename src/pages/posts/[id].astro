@@ -2,10 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import PostDetail from '../../components/PostDetail';
 
-import { getPostsFromNotion } from '../../lib/notion';
+import { getPosts } from '../../lib/notion';
 
 export async function getStaticPaths() {
-  const posts = await getPostsFromNotion(); 
+  const {posts} = await getPosts(); 
 
   return posts.map((post) => ({
     params: { id: post.id }, 
