@@ -11,7 +11,7 @@ const pageSize = 10;
 const outDir = path.resolve("public");
 
 async function generate() {
-  const allPages = []; // ✅ 이 줄 추가
+  const allPages = [];
   let cursor = undefined;
   let pageIndex = 1;
 
@@ -83,16 +83,15 @@ async function generate() {
 
   const tagsDir = path.join(outDir, "tags");
   if (!fs.existsSync(tagsDir)) {
-    fs.mkdirSync(tagsDir); // ✅ 디렉토리가 없다면 생성
+    fs.mkdirSync(tagsDir);
   }
 
   for (const [tag, posts] of Object.entries(tagMap)) {
-    const safeTag = encodeURIComponent(tag.toLowerCase());
-
+    const safeTag = tag;
     fs.writeFileSync(
       path.join(tagsDir, `${safeTag}.json`),
       JSON.stringify(posts, null, 2),
-      'utf-8'
+      "utf-8"
     );
     console.log(`🏷️ 태그 "${tag}" 저장 완료 (${posts.length}개)`);
   }
