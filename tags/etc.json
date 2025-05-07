@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1de296c3-3d92-8037-8e57-f12bbec6d767",
+    "title": "Toss Simplicity24 리뷰",
+    "tags": [
+      "etc",
+      "리뷰"
+    ],
+    "summary": "Toss Simplicity24를 통해 새롭게 배운 것들",
+    "created": "2024-11-14",
+    "isRecommended": true,
+    "url": "/posts/1de296c3-3d92-8037-8e57-f12bbec6d767"
+  },
+  {
+    "id": "1de296c3-3d92-80e6-b5d7-f8b7d3b55d8b",
+    "title": "웹 최적화",
+    "tags": [
+      "etc"
+    ],
+    "summary": "최적화 강의를 듣고 메모해 보았다",
+    "created": "2024-07-24",
+    "isRecommended": false,
+    "url": "/posts/1de296c3-3d92-80e6-b5d7-f8b7d3b55d8b"
+  },
+  {
+    "id": "1de296c3-3d92-806c-af63-c158221fed1a",
+    "title": "디자인 시스템",
+    "tags": [
+      "etc"
+    ],
+    "summary": "디자인 시스템이 무엇인지 알아보자",
+    "created": "2024-07-19",
+    "isRecommended": true,
+    "url": "/posts/1de296c3-3d92-806c-af63-c158221fed1a"
+  },
+  {
+    "id": "1de296c3-3d92-800f-9ecf-f61f54902b7e",
+    "title": "코드 리뷰에 대한 고찰",
+    "tags": [
+      "etc"
+    ],
+    "summary": "좋은 코드 리뷰란 무엇인지 나름대로 고찰한 결과",
+    "created": "2024-05-28",
+    "isRecommended": false,
+    "url": "/posts/1de296c3-3d92-800f-9ecf-f61f54902b7e"
+  },
+  {
+    "id": "1de296c3-3d92-801c-ab6e-c25a8236cdaa",
+    "title": "개발 문화에 대한 고찰",
+    "tags": [
+      "etc"
+    ],
+    "summary": "개발 문화란 무엇인가, 내가 지향하는 개발 문화는 어떠한가",
+    "created": "2024-05-21",
+    "isRecommended": true,
+    "url": "/posts/1de296c3-3d92-801c-ab6e-c25a8236cdaa"
+  }
+]
