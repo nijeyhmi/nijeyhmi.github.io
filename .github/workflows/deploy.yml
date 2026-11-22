@@ -4,6 +4,19 @@ on:
   push:
     branches:
       - main
+  # Actions 탭에서 수동 실행
+  workflow_dispatch:
+  # Notion 새 글 반영: 매일 03:00 KST (18:00 UTC)
+  # 참고: 공개 저장소에 60일간 커밋이 없으면 GitHub가 schedule을 자동 비활성화합니다.
+  schedule:
+    - cron: "0 18 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -21,10 +34,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+
+      # Notion에서 내려받은 이미지를 실행 간에 재사용 (변경된 파일만 새로 받음)
+      - name: Restore Notion images cache
+        uses: actions/cache@v4
+        with:
+          path: public/notion-images
+          key: notion-images-${{ github.run_id }}
+          restore-keys: notion-images-
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
+      # prebuild(scripts/fetch-notion.js) → astro build
       - name: Build
         run: npm run build
 
