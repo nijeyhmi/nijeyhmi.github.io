@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><meta name="generator" content="Astro v4.16.18"><title>Vue 프로젝트에 Vite 도입하기 | NHYELOG.DEV</title><meta name="description" content="Vue3 프로젝트에 Vite 도입하여 프로젝트 서버 구동 속도 높이기"><link rel="canonical" href="https://nijeyhmi.github.io/posts/1dc296c3-3d92-80b6-8e64-cd0fab55724f/"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="NHYELOG.DEV"><meta property="og:title" content="Vue 프로젝트에 Vite 도입하기 | NHYELOG.DEV"><meta property="og:description" content="Vue3 프로젝트에 Vite 도입하여 프로젝트 서버 구동 속도 높이기"><meta property="og:url" content="https://nijeyhmi.github.io/posts/1dc296c3-3d92-80b6-8e64-cd0fab55724f/"><link rel="stylesheet" href="/_astro/index.DQtTDkGZ.css">
+<style>.post-content pre.astro-code{background-color:#f6f8fa!important;border:1px solid #e5e7eb;overflow-x:auto}.post-content :not(pre)>code{background:#f3f4f6;border-radius:.25rem;padding:.1em .35em;font-weight:500}.post-content :not(pre)>code:before,.post-content :not(pre)>code:after{content:none}.post-content table{display:block;overflow-x:auto}.post-content img{margin-left:auto;margin-right:auto;height:auto}.post-content details{border:1px solid #e5e7eb;border-radius:.5rem;padding:.5rem 1rem}.post-content summary{cursor:pointer;font-weight:700}.post-content .callout{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background:#f7f6f3;margin:1.5em 0}.post-content .callout-body{min-width:0}.post-content .callout-body>:first-child{margin-top:0}.post-content .callout-body>:last-child{margin-bottom:0}.post-content .callout-icon{line-height:1.75}.post-content li>input[type=checkbox]{margin:0 .4em 0 0}.post-content ul:has(>li>input[type=checkbox]){list-style:none;padding-left:.25em}
+</style></head> <body class="min-h-screen flex flex-col bg-white text-neutral-900"> <header class="w-full h-[60px] sticky top-0 left-0 z-50 bg-white border-b border-gray-100"><div class="max-w-[1140px] w-[92%] h-full mx-auto flex items-center"><a href="/" class="text-xl font-bold mr-6">NHYELOG</a></div></header> <main class="flex-1 w-full">  <article class="w-full max-w-[1050px] mx-auto px-4 md:px-6 pb-24"> <header class="border-b mb-10 pt-6"> <h1 class="text-3xl md:text-4xl font-bold mb-2 break-keep">Vue 프로젝트에 Vite 도입하기</h1> <time datetime="2024-01-30" class="text-gray-400">2024. 01. 30</time> <ul class="flex flex-wrap gap-2 mt-2 pb-5"> <li> <a href="/?tag=Vue" class="inline-block bg-green-50 text-lime-950 font-bold rounded-lg py-1 px-2 text-sm"> Vue </a> </li> </ul> </header> <div class="post-content prose prose-neutral max-w-none break-words"><p>회사에서 진행하는 프로젝트의 서버 구동 속도를 높이기 위해 Vite를 도입하기로 했다.</p>
+<p><a href="https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/">https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/</a></p>
+<p>해당 블로그를 참고하여 진행했다.</p>
+<h2 id="1-dependencies-업데이트">1. Dependencies 업데이트</h2>
+<p>package.json에 있는 vue/cli 관련 dependencies를 모두 제거한다</p>
+<p>sass-loader도 마찬가지</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"></span>
+<span class="line"><span style="color:#24292E">// package</span><span style="color:#6F42C1">.json</span></span>
+<span class="line"><span style="color:#24292E">"@vue/</span><span style="color:#22863A">cli-plugin-babel</span><span style="color:#24292E">": "</span><span style="color:#D73A49">~</span><span style="color:#24292E">4</span><span style="color:#6F42C1">.5</span><span style="color:#24292E">.0", // remove</span></span>
+<span class="line"><span style="color:#24292E">"@vue/</span><span style="color:#22863A">cli-plugin-eslint</span><span style="color:#24292E">": "</span><span style="color:#D73A49">~</span><span style="color:#24292E">4</span><span style="color:#6F42C1">.5</span><span style="color:#24292E">.0", // remove</span></span>
+<span class="line"><span style="color:#24292E">"@vue/</span><span style="color:#22863A">cli-plugin-router</span><span style="color:#24292E">": "</span><span style="color:#D73A49">~</span><span style="color:#24292E">4</span><span style="color:#6F42C1">.5</span><span style="color:#24292E">.0", // remove</span></span>
+<span class="line"><span style="color:#24292E">"@vue/</span><span style="color:#22863A">cli-plugin-vuex</span><span style="color:#24292E">": "</span><span style="color:#D73A49">~</span><span style="color:#24292E">4</span><span style="color:#6F42C1">.5</span><span style="color:#24292E">.0", // remove</span></span>
+<span class="line"><span style="color:#24292E">"@vue/</span><span style="color:#22863A">cli-service</span><span style="color:#24292E">": "</span><span style="color:#D73A49">~</span><span style="color:#24292E">4</span><span style="color:#6F42C1">.5</span><span style="color:#24292E">.0", // remove</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#24292E">"</span><span style="color:#22863A">sass-loader</span><span style="color:#24292E">": "^8</span><span style="color:#6F42C1">.0</span><span style="color:#24292E">.2" // remove</span></span>
+<span class="line"></span></code></pre>
+<p>이후 vite 관련 dependencies를 추가한다</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#24292E">// package</span><span style="color:#6F42C1">.json</span></span>
+<span class="line"><span style="color:#24292E">"@vitejs/</span><span style="color:#22863A">plugin-vue</span><span style="color:#24292E">": "^1</span><span style="color:#6F42C1">.6</span><span style="color:#24292E">.1",</span></span>
+<span class="line"><span style="color:#24292E">"vite": "^2</span><span style="color:#6F42C1">.5.4</span><span style="color:#24292E">.",</span></span>
+<span class="line"></span></code></pre>
+<p>vue2 프로젝트를 마이그레이션하는 경우는 vue2용 유지관리 vite 플러그인도 추가해야함(vue3의 경우 해당사항 없음)</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#24292E">// package</span><span style="color:#6F42C1">.json</span></span>
+<span class="line"><span style="color:#24292E">"</span><span style="color:#22863A">vite-plugin-vue2</span><span style="color:#24292E">": "1</span><span style="color:#6F42C1">.9</span><span style="color:#24292E">.0"</span></span>
+<span class="line"></span></code></pre>
+<p>마지막으로 vite vue plugin이 vue template을 조절할 수 있도록 vue template compiler를 삭제한다</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#24292E">// package</span><span style="color:#6F42C1">.json</span></span>
+<span class="line"><span style="color:#24292E">"</span><span style="color:#22863A">vue-template-compiler</span><span style="color:#24292E">": "^2</span><span style="color:#6F42C1">.6</span><span style="color:#24292E">.11" //remove</span></span>
+<span class="line"></span></code></pre>
+<h2 id="2-모던-브라우저-지원">2. 모던 브라우저 지원</h2>
+<p>익스플로러와 같은 오래된 브라우저를 Vite는 지원하지 않는다 → 이를 제외함으로써 빌드를 더 빨리 할 수 있도록 함</p>
+<p>즉, Babel과 같은 플러그인이 삭제되어야 함</p>
+<p>package.json에서 babel 및 core-js 삭제</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#005CC5"> package</span><span style="color:#24292E">.</span><span style="color:#005CC5">json</span></span>
+<span class="line"><span style="color:#032F62">"babel-eslint"</span><span style="color:#24292E">: </span><span style="color:#032F62">"^10.1.0"</span><span style="color:#24292E">, </span><span style="color:#D73A49">//</span><span style="color:#D73A49"> remove</span></span>
+<span class="line"><span style="color:#032F62">"core-js"</span><span style="color:#24292E">: </span><span style="color:#032F62">"^3.6.5"</span><span style="color:#24292E">, </span><span style="color:#D73A49">//</span><span style="color:#D73A49"> remove</span></span>
+<span class="line"></span></code></pre>
+<p>eslint를 사용 중이라면 .eslintrc 파일도 수정</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E"> .eslintrc</span></span>
+<span class="line"><span style="color:#D73A49">//</span><span style="color:#D73A49"> remove</span></span>
+<span class="line"><span style="color:#24292E">parserOptions: {</span></span>
+<span class="line"><span style="color:#24292E">    parser: </span><span style="color:#032F62">"babel-eslint"</span><span style="color:#24292E">,</span></span>
+<span class="line"><span style="color:#24292E">},</span></span>
+<span class="line"></span></code></pre>
+<p>env가 es2021 이후의 브라우저만 지원하도록 eslint가 잡아낼 수 있도록 세팅</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E"> .eslintrc</span></span>
+<span class="line"><span style="color:#24292E">env: {</span></span>
+<span class="line"><span style="color:#24292E">    node: true, </span><span style="color:#D73A49">//</span><span style="color:#D73A49"> remove</span></span>
+<span class="line"><span style="color:#24292E">    es2021: true,</span></span>
+<span class="line"><span style="color:#24292E">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="3-vite-config-추가">3. Vite Config 추가</h2>
+<p><code>npm init vite@latest</code> 명령어 사용 시 생성되는 vite.config.js를 루트 디렉토리에 만들어 준다</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#005CC5"> vite</span><span style="color:#24292E">.</span><span style="color:#005CC5">config</span><span style="color:#24292E">.js</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#24292E">import { defineConfig } </span><span style="color:#D73A49">from</span><span style="color:#032F62"> 'vite'</span></span>
+<span class="line"><span style="color:#24292E">import vue </span><span style="color:#D73A49">from</span><span style="color:#032F62"> '@vitejs/plugin-vue'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E"> https:</span><span style="color:#D73A49">//</span><span style="color:#005CC5">vitejs</span><span style="color:#24292E">.</span><span style="color:#005CC5">dev</span><span style="color:#D73A49">/</span><span style="color:#24292E">config</span><span style="color:#D73A49">/</span></span>
+<span class="line"><span style="color:#24292E">export </span><span style="color:#D73A49">default</span><span style="color:#24292E"> defineConfig({</span></span>
+<span class="line"><span style="color:#24292E">  plugins: [vue()]</span></span>
+<span class="line"><span style="color:#24292E">})</span></span>
+<span class="line"></span></code></pre>
+<p>vue2를 사용 중이라면 @vitejs/plugin-vue 대신 vite-plugin-vue2를 사용해야 한다</p>
+<p>(vue3 사용 시 생략 가능)</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#005CC5"> vite</span><span style="color:#24292E">.</span><span style="color:#005CC5">config</span><span style="color:#24292E">.js</span></span>
+<span class="line"><span style="color:#24292E">import vue </span><span style="color:#D73A49">from</span><span style="color:#032F62"> '@vitejs/plugin-vue'</span><span style="color:#D73A49"> //</span><span style="color:#D73A49"> remove</span></span>
+<span class="line"><span style="color:#24292E">import { createVuePlugin </span><span style="color:#D73A49">as</span><span style="color:#24292E"> vue } </span><span style="color:#D73A49">from</span><span style="color:#032F62"> "vite-plugin-vue2"</span><span style="color:#24292E">;</span></span>
+<span class="line"></span></code></pre>
+<p><code>@</code> alias 사용을 위한 옵션 추가</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#005CC5"> vite</span><span style="color:#24292E">.</span><span style="color:#005CC5">config</span><span style="color:#24292E">.js</span></span>
+<span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E">...</span></span>
+<span class="line"><span style="color:#24292E">const </span><span style="color:#D73A49">path</span><span style="color:#D73A49"> =</span><span style="color:#24292E"> require(</span><span style="color:#032F62">"path"</span><span style="color:#24292E">);</span></span>
+<span class="line"><span style="color:#24292E">export </span><span style="color:#D73A49">default</span><span style="color:#24292E"> defineConfig({</span></span>
+<span class="line"><span style="color:#D73A49">  //</span><span style="color:#24292E">...</span></span>
+<span class="line"><span style="color:#24292E">  resolve: {</span></span>
+<span class="line"><span style="color:#24292E">    alias: {</span></span>
+<span class="line"><span style="color:#032F62">      "@"</span><span style="color:#24292E">: </span><span style="color:#D73A49">path</span><span style="color:#24292E">.resolve(__dirname, </span><span style="color:#032F62">"./src"</span><span style="color:#24292E">),</span></span>
+<span class="line"><span style="color:#24292E">    },</span></span>
+<span class="line"><span style="color:#24292E">  },</span></span>
+<span class="line"><span style="color:#24292E">});</span></span>
+<span class="line"></span></code></pre>
+<h2 id="4-indexhtml-위치-변경">4. index.html 위치 변경</h2>
+<p>public 디렉토리 내에 위치한 index.html을 루트 디렉토리로 이동</p>
+<p>파일도 수정 필요</p>
+<p>변수들을 모두 하드코딩으로 바꾸어준다</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#005CC5"> index</span><span style="color:#24292E">.</span><span style="color:#005CC5">html</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E">...</span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">!</span><span style="color:#6A737D">--remove--></span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">link rel</span><span style="color:#D73A49">=</span><span style="color:#032F62">"icon"</span><span style="color:#24292E"> href</span><span style="color:#D73A49">=</span><span style="color:#032F62">"&#x3C;%= BASE_URL %>favicon.ico"</span><span style="color:#D73A49">></span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">!</span><span style="color:#6A737D">--add--></span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">link rel</span><span style="color:#D73A49">=</span><span style="color:#032F62">"icon"</span><span style="color:#24292E"> href</span><span style="color:#D73A49">=</span><span style="color:#032F62">"/favicon.ico"</span><span style="color:#D73A49">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E">...</span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">!</span><span style="color:#6A737D">--remove--></span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">title</span><span style="color:#D73A49">>&#x3C;</span><span style="color:#24292E">%</span><span style="color:#D73A49">=</span><span style="color:#005CC5"> htmlWebpackPlugin</span><span style="color:#24292E">.</span><span style="color:#005CC5">options</span><span style="color:#24292E">.title %</span><span style="color:#D73A49">>&#x3C;/</span><span style="color:#24292E">title</span><span style="color:#D73A49">></span><span style="color:#24292E"> </span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">!</span><span style="color:#6A737D">--add--></span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">title</span><span style="color:#D73A49">></span><span style="color:#24292E">Hard Coded Title</span><span style="color:#D73A49">&#x3C;/</span><span style="color:#24292E">title</span><span style="color:#D73A49">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E">...</span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">!</span><span style="color:#6A737D">--remove--></span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">strong</span><span style="color:#D73A49">></span><span style="color:#24292E">We</span><span style="color:#032F62">'re sorry but &#x3C;%= htmlWebpackPlugin.options.title %> doesn'</span><span style="color:#24292E">t work properly </span><span style="color:#D73A49">without</span><span style="color:#24292E"> JavaScript </span><span style="color:#D73A49">enabled</span><span style="color:#24292E">. Please </span><span style="color:#D73A49">enable</span><span style="color:#24292E"> it </span><span style="color:#D73A49">to</span><span style="color:#D73A49"> continue</span><span style="color:#24292E">.</span><span style="color:#D73A49">&#x3C;/</span><span style="color:#24292E">strong</span><span style="color:#D73A49">></span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">!</span><span style="color:#6A737D">--add--></span></span>
+<span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">strong</span><span style="color:#D73A49">></span><span style="color:#24292E">We</span><span style="color:#032F62">'re sorry but this app doesn'</span><span style="color:#24292E">t work properly </span><span style="color:#D73A49">without</span><span style="color:#24292E"> JavaScript </span><span style="color:#D73A49">enabled</span><span style="color:#24292E">. Please </span><span style="color:#D73A49">enable</span><span style="color:#24292E"> it </span><span style="color:#D73A49">to</span><span style="color:#D73A49"> continue</span><span style="color:#24292E">.</span><span style="color:#D73A49">&#x3C;/</span><span style="color:#24292E">strong</span><span style="color:#D73A49">></span></span>
+<span class="line"></span></code></pre>
+<p>수정 후 main.js도 명시적으로 추가해줘야 한다</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">&#x3C;</span><span style="color:#24292E">script </span><span style="color:#D73A49">type=</span><span style="color:#032F62">"module"</span><span style="color:#24292E"> src</span><span style="color:#D73A49">=</span><span style="color:#032F62">"/src/main.js"</span><span style="color:#D73A49">>&#x3C;/</span><span style="color:#24292E">script</span><span style="color:#D73A49">></span></span>
+<span class="line"></span></code></pre>
+<h2 id="5-scripts-업데이트">5. Scripts 업데이트</h2>
+<p>package.json의 scripts 명령어 vite 관련 명령어로 수정</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#005CC5"> package</span><span style="color:#24292E">.</span><span style="color:#005CC5">json</span></span>
+<span class="line"><span style="color:#032F62">"serve"</span><span style="color:#24292E">: </span><span style="color:#032F62">"vue-cli-service serve"</span><span style="color:#24292E">, </span><span style="color:#D73A49">//</span><span style="color:#D73A49"> remove</span></span>
+<span class="line"><span style="color:#032F62">"build"</span><span style="color:#24292E">: </span><span style="color:#032F62">"vue-cli-service build"</span><span style="color:#24292E">, </span><span style="color:#D73A49">//</span><span style="color:#D73A49"> remove</span></span>
+<span class="line"><span style="color:#032F62">"dev"</span><span style="color:#24292E">: </span><span style="color:#032F62">"vite"</span><span style="color:#24292E">,</span></span>
+<span class="line"><span style="color:#032F62">"build"</span><span style="color:#24292E">: </span><span style="color:#032F62">"vite build"</span><span style="color:#24292E">,</span></span>
+<span class="line"><span style="color:#032F62">"serve"</span><span style="color:#24292E">: </span><span style="color:#032F62">"vite preview"</span><span style="color:#24292E">,</span></span>
+<span class="line"></span></code></pre>
+<p>eslint 명령어도 수정</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#032F62">"lint"</span><span style="color:#24292E">: </span><span style="color:#032F62">"eslint --ext .js,.vue --ignore-path .gitignore --fix src"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="6-환경변수-수정">6. 환경변수 수정</h2>
+<p>route의 index.js 파일 수정</p>
+<p>더이상 process 변수에서 값을 가져올 수 없다</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E"> router</span><span style="color:#D73A49">/</span><span style="color:#005CC5">index</span><span style="color:#24292E">.</span><span style="color:#005CC5">js</span></span>
+<span class="line"><span style="color:#24292E">base: </span><span style="color:#005CC5">process</span><span style="color:#24292E">.</span><span style="color:#005CC5">env</span><span style="color:#24292E">.BASE_URL, </span><span style="color:#D73A49">//remove</span></span>
+<span class="line"><span style="color:#24292E">base: </span><span style="color:#005CC5">import</span><span style="color:#24292E">.</span><span style="color:#005CC5">meta</span><span style="color:#24292E">.</span><span style="color:#005CC5">env</span><span style="color:#24292E">.</span><span style="color:#005CC5">BASE_URL</span><span style="color:#24292E">,</span></span>
+<span class="line"></span></code></pre>
+<p>또한, <code>VUE_APP_</code>  prefix를 사용중이라면 <code>VITE_</code> prefix로 수정 필요</p>
+<p>이건 건너뛰어도 되지 않나 싶어서 안해봤는데 아예 env 변수를 읽어오질 못함</p>
+<h2 id="7-sfc-컴포넌트에-vue-extension-추가">7. SFC 컴포넌트에 .vue extension 추가</h2>
+<p>.vue 파일을 import 중이라면 뒤에 확장자를 붙여주기</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#005CC5"> Home</span><span style="color:#24292E">.</span><span style="color:#005CC5">vue</span></span>
+<span class="line"><span style="color:#24292E">import HelloWorld </span><span style="color:#D73A49">from</span><span style="color:#032F62"> "@/components/HelloWorld.vue"</span><span style="color:#24292E">; </span><span style="color:#D73A49">//</span><span style="color:#24292E"> .vue </span><span style="color:#D73A49">is</span><span style="color:#D73A49"> required</span></span>
+<span class="line"></span></code></pre>
+<p>vite.config.js에도 확장자 옵션을 추가</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#005CC5"> vite</span><span style="color:#24292E">.</span><span style="color:#005CC5">config</span><span style="color:#24292E">.js</span></span>
+<span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E">...</span></span>
+<span class="line"><span style="color:#24292E">export </span><span style="color:#D73A49">default</span><span style="color:#24292E"> defineConfig({</span></span>
+<span class="line"><span style="color:#24292E">  plugins: [vue()],</span></span>
+<span class="line"><span style="color:#24292E">  resolve: {</span></span>
+<span class="line"><span style="color:#24292E">    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],</span></span>
+<span class="line"><span style="color:#D73A49">    //</span><span style="color:#24292E">...</span></span>
+<span class="line"><span style="color:#24292E">  },</span></span>
+<span class="line"><span style="color:#24292E">});</span></span>
+<span class="line"></span></code></pre>
+<h2 id="8-magic-comment-지우기">8. Magic Comment 지우기</h2>
+<p>webpack 관련 구체적 코멘트가 동적 import를 해주는데, vite에서는 더이상 지원하지 않음</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#D73A49">//</span><span style="color:#24292E"> router</span><span style="color:#D73A49">/</span><span style="color:#005CC5">index</span><span style="color:#24292E">.</span><span style="color:#005CC5">js</span></span>
+<span class="line"><span style="color:#24292E">import(</span></span>
+<span class="line"><span style="color:#6A737D">    /* webpackChunkName: "about" */</span><span style="color:#D73A49">  //</span><span style="color:#D73A49"> remove</span></span>
+<span class="line"><span style="color:#032F62">    "../views/About.vue"</span></span>
+<span class="line"><span style="color:#24292E">),</span></span>
+<span class="line"></span></code></pre></div> <nav class="mt-16 pt-6 border-t grid gap-4 sm:grid-cols-2" aria-label="이전/다음 글"> <div> <a href="/posts/1e8296c3-3d92-8055-a64c-ed97a7e5c1f7/" class="block group"> <span class="text-sm text-gray-400">← 이전 글</span> <span class="block font-bold group-hover:underline">Function components cannot be given refs. Attempts to access this ref will fail.</span> </a> </div> <div class="sm:text-right"> <a href="/posts/1de296c3-3d92-803a-a379-de351743ea0f/" class="block group"> <span class="text-sm text-gray-400">다음 글 →</span> <span class="block font-bold group-hover:underline">재사용성의 6가지 기준</span> </a> </div> </nav> <a href="/" class="inline-block mt-10 text-gray-500 hover:underline">← 목록으로</a> </article>   </main> <footer class="w-full bg-white h-[59px] flex justify-center items-center border-t border-gray-100"><p class="text-sm">© <!-- -->2026<!-- --> nijeyhmi&#x27;s Blog. All rights reserved.</p></footer> </body></html>

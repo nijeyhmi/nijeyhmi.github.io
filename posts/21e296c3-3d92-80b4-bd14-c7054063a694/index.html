@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><meta name="generator" content="Astro v4.16.18"><title>채널데브톡 | NHYELOG.DEV</title><meta name="description" content="채널데브톡"><link rel="canonical" href="https://nijeyhmi.github.io/posts/21e296c3-3d92-80b4-bd14-c7054063a694/"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="NHYELOG.DEV"><meta property="og:title" content="채널데브톡 | NHYELOG.DEV"><meta property="og:description" content="채널데브톡"><meta property="og:url" content="https://nijeyhmi.github.io/posts/21e296c3-3d92-80b4-bd14-c7054063a694/"><link rel="stylesheet" href="/_astro/index.DQtTDkGZ.css">
+<style>.post-content pre.astro-code{background-color:#f6f8fa!important;border:1px solid #e5e7eb;overflow-x:auto}.post-content :not(pre)>code{background:#f3f4f6;border-radius:.25rem;padding:.1em .35em;font-weight:500}.post-content :not(pre)>code:before,.post-content :not(pre)>code:after{content:none}.post-content table{display:block;overflow-x:auto}.post-content img{margin-left:auto;margin-right:auto;height:auto}.post-content details{border:1px solid #e5e7eb;border-radius:.5rem;padding:.5rem 1rem}.post-content summary{cursor:pointer;font-weight:700}.post-content .callout{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background:#f7f6f3;margin:1.5em 0}.post-content .callout-body{min-width:0}.post-content .callout-body>:first-child{margin-top:0}.post-content .callout-body>:last-child{margin-bottom:0}.post-content .callout-icon{line-height:1.75}.post-content li>input[type=checkbox]{margin:0 .4em 0 0}.post-content ul:has(>li>input[type=checkbox]){list-style:none;padding-left:.25em}
+</style></head> <body class="min-h-screen flex flex-col bg-white text-neutral-900"> <header class="w-full h-[60px] sticky top-0 left-0 z-50 bg-white border-b border-gray-100"><div class="max-w-[1140px] w-[92%] h-full mx-auto flex items-center"><a href="/" class="text-xl font-bold mr-6">NHYELOG</a></div></header> <main class="flex-1 w-full">  <article class="w-full max-w-[1050px] mx-auto px-4 md:px-6 pb-24"> <header class="border-b mb-10 pt-6"> <h1 class="text-3xl md:text-4xl font-bold mb-2 break-keep">채널데브톡</h1> <time datetime="2025-06-26" class="text-gray-400">2025. 06. 26</time> <ul class="flex flex-wrap gap-2 mt-2 pb-5"> <li> <a href="/?tag=%EB%A6%AC%EB%B7%B0" class="inline-block bg-green-50 text-lime-950 font-bold rounded-lg py-1 px-2 text-sm"> 리뷰 </a> </li> </ul> </header> <div class="post-content prose prose-neutral max-w-none break-words"><h2 id="채널톡-alf-rag를-선도할-수-있는-이유">채널톡 ALF, RAG를 선도할 수 있는 이유</h2>
+<p>ALF: 상담사를 대신해 고객의 문의 내용에 답변하는 AI 에이전트</p>
+<ul>
+<li>등록된 FAQ 기반으로 고객 문의 해결</li>
+<li>도큐먼트에서 공개된 아티클을 참고해 답변 생성</li>
+<li>고객 문의에 적합한 커맨드를 알아서 추천</li>
+</ul>
+<p>ALF 구조: Routing + RAG</p>
+<p>좋은 사용자 경험을 위해서는 못하면 못한다고 이야기하는 것이 필요함</p>
+<p>전처리</p>
+<ul>
+<li>고객이 제공해준 정보를 LLM이 잘 활용할 수 있도록 가공(chunking)</li>
+<li>벡터로 만드는 과정(Embedding)</li>
+</ul>
+<p>답변 생성</p>
+<ul>
+<li>질문과 관련이 있는 청크를 vector DB에서 검색</li>
+</ul>
+<p>chunking: LLM 응답의 품질에 직접적인 영향을 끼치는, 문서나 데이터를 작은 조각으로 나누는 과정</p>
+<ul>
+<li>의미적 단위로 묶어야 함</li>
+<li>overlap을 적절히 주어야 함</li>
+<li>embedding 모델의 특징을 반영해야 함</li>
+<li>평가를 적절히 진행해야 함</li>
+</ul>
+<p>Fact check가 중요 → 할루시네이션을 방지해야 함. 답변을 할 수 있는지 없는지를 fact check로 처리함</p>
+<p>Fact check: 이 답변이 사용자의 질문에 사실에 기반한 적절한 답변인가?</p>
+<ul>
+<li>Answer relevancy: 질문의 내용을 답변으로 해결해 주었는가?</li>
+<li>Context relevancy: 주어진 청크가 질문 해결에 도움이 되는가?</li>
+<li>Faithfulness: 답변이 주어진 청크를 기반으로 생성되었는가?</li>
+</ul>
+<ol>
+<li>답변은 반드시 청크를 기반으로 생성되어야만 한다</li>
+<li>Context relevancy, faithfulness를 만족하면  LLM은 적절한 답변을 생성한다</li>
+</ol>
+<h2 id="ui를-꼭-사람이-짜야-할까요">UI를 꼭 사람이 짜야 할까요?</h2>
+<p>UI 작업은 프론트엔드 개발의 “병목”이다.</p>
+<p>Bezier 디자인 시스템을 사용중</p>
+<p>Figma에서 코드로, 그런데 디자인 시스템을 접목시켜 구현해야 함</p>
+<p>알고리즘으로 푸는 경우 변환 로직 의존도가 높아짐. 유지보수가 불가능</p>
+<p>→ LLM으로 회색 지대를 해결해보자고 생각</p>
+<ol>
+<li>
+<p>Figma Image → Code</p>
+<p>충분한 성능을 내지 못함</p>
+<ul>
+<li>정보의 유실</li>
+<li>정확도 부족</li>
+</ul>
+</li>
+<li>
+<p>Figma XML → Code</p>
+<p>피그마 노드 데이터를 LLM이 적절하게 활용할 수 있도록 피그마 플러그인을 개발</p>
+<p>코드 생성을 위한 최적의 형태로 LLM 전달이 가능해짐</p>
+<p>변환 로직이 피그마쪽 스택에만 의존하므로 의존도도 낮아짐</p>
+</li>
+</ol>
+<p>Cursor를 활용</p>
+<p>반복 작업을 줄이고 개발 생산성을 높이는데 도움을 줌</p>
+<p>매번 고품질의 결과를 얻기 위해서는 적절한 컨텍스트 전달이 필요 → 이를 위해 Cursor Rules 사용</p>
+<p>Cursor Rules: LLM이 동적으로 참조할 수 있는 프롬프트</p>
+<ol>
+<li>기본 뼈대 만들기(디자인 ⇒ 코드 초안)</li>
+<li>의미 있는 덩어리로 묶기(컴포넌트 군집화)</li>
+<li>똑똑하게 다듬기(디자인 시스템 명세 기반 코드 완성)</li>
+<li>최종 점검 및 마무리(품질 향상)</li>
+</ol>
+<p>Cursor Rules 구현</p>
+<ol>
+<li>
+<p>Single Turn 방식: 한 턴에 모든 작업 수행</p>
+<p>모든 로직과 컨텍스트를 단일 룰에 적용</p>
+<p>→ 할루시네이션 발생. 너무 긴 컨텍스트를 제공했기 때문</p>
+</li>
+<li>
+<p>Multi Turn 방식: 파이프라인을 노드 단위로 쪼개기</p>
+<p>여전히 컨택스트가 넘치는 것은 막을 수 없음</p>
+<p>초과하지 않더라도 컨택스트가 길어지면 할루시네이션을 피하기 어려움</p>
+</li>
+<li>
+<p>Multi Turn + Multi Chat: 넘치려고 하면 쪼개서 독립적으로 실행</p>
+<p>각 노드간 공유되어야 하는 관심사는 메모리에 저장</p>
+</li>
+</ol>
+<h2 id="버그-대응과-pr-리뷰-시간-90-단축시킨-방법">버그 대응과 PR 리뷰 시간 90% 단축시킨 방법</h2>
+<p>Cursor와 MCP(Model Context Protocol)가 만나면?</p>
+<h3 id="1-버그-대응">1. 버그 대응</h3>
+<p>실제 시스템상 버그인지, 고객사의 세팅문제인지 모르기 때문에 리소스를 많이 써야함</p>
+<p>소모적인 버그 분석, 혁신이 필요했음</p>
+<h3 id="2-pr-리뷰">2. PR 리뷰</h3>
+<p>밀려드는 PR로 인해 리뷰가 병목 지점이 되어 버림</p>
+<p>⇒ 개발 속도와 코드 퀄리티를 모두 잡아보자</p>
+<p>MCP와 프롬프트</p>
+<p>기준과 절차를 따라 결과를 요청</p>
+<p>AI를 위한 초정밀 업무 메뉴얼로 발전시킴</p>
+<p>프롬프트 작성 시에는 할루시네이션 없이 명확히 실행이 가능하도록 함</p>
+<p>MCP로 가져온 외부 정보를 Cursor로 작업</p></div> <nav class="mt-16 pt-6 border-t grid gap-4 sm:grid-cols-2" aria-label="이전/다음 글"> <div> <a href="/posts/202296c3-3d92-8048-be49-dd2c317f0e49/" class="block group"> <span class="text-sm text-gray-400">← 이전 글</span> <span class="block font-bold group-hover:underline">모닥불 EP.12 코드 리뷰할 시간이 어딨어요? 리뷰</span> </a> </div> <div class="sm:text-right">  </div> </nav> <a href="/" class="inline-block mt-10 text-gray-500 hover:underline">← 목록으로</a> </article>   </main> <footer class="w-full bg-white h-[59px] flex justify-center items-center border-t border-gray-100"><p class="text-sm">© <!-- -->2026<!-- --> nijeyhmi&#x27;s Blog. All rights reserved.</p></footer> </body></html>

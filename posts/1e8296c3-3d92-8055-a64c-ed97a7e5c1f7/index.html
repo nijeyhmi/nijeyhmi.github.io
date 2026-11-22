@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><meta name="generator" content="Astro v4.16.18"><title>Function components cannot be given refs. Attempts to access this ref will fail. | NHYELOG.DEV</title><meta name="description" content="Function components cannot be given refs. Attempts to access this ref will fail."><link rel="canonical" href="https://nijeyhmi.github.io/posts/1e8296c3-3d92-8055-a64c-ed97a7e5c1f7/"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="NHYELOG.DEV"><meta property="og:title" content="Function components cannot be given refs. Attempts to access this ref will fail. | NHYELOG.DEV"><meta property="og:description" content="Function components cannot be given refs. Attempts to access this ref will fail."><meta property="og:url" content="https://nijeyhmi.github.io/posts/1e8296c3-3d92-8055-a64c-ed97a7e5c1f7/"><link rel="stylesheet" href="/_astro/index.DQtTDkGZ.css">
+<style>.post-content pre.astro-code{background-color:#f6f8fa!important;border:1px solid #e5e7eb;overflow-x:auto}.post-content :not(pre)>code{background:#f3f4f6;border-radius:.25rem;padding:.1em .35em;font-weight:500}.post-content :not(pre)>code:before,.post-content :not(pre)>code:after{content:none}.post-content table{display:block;overflow-x:auto}.post-content img{margin-left:auto;margin-right:auto;height:auto}.post-content details{border:1px solid #e5e7eb;border-radius:.5rem;padding:.5rem 1rem}.post-content summary{cursor:pointer;font-weight:700}.post-content .callout{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background:#f7f6f3;margin:1.5em 0}.post-content .callout-body{min-width:0}.post-content .callout-body>:first-child{margin-top:0}.post-content .callout-body>:last-child{margin-bottom:0}.post-content .callout-icon{line-height:1.75}.post-content li>input[type=checkbox]{margin:0 .4em 0 0}.post-content ul:has(>li>input[type=checkbox]){list-style:none;padding-left:.25em}
+</style></head> <body class="min-h-screen flex flex-col bg-white text-neutral-900"> <header class="w-full h-[60px] sticky top-0 left-0 z-50 bg-white border-b border-gray-100"><div class="max-w-[1140px] w-[92%] h-full mx-auto flex items-center"><a href="/" class="text-xl font-bold mr-6">NHYELOG</a></div></header> <main class="flex-1 w-full">  <article class="w-full max-w-[1050px] mx-auto px-4 md:px-6 pb-24"> <header class="border-b mb-10 pt-6"> <h1 class="text-3xl md:text-4xl font-bold mb-2 break-keep">Function components cannot be given refs. Attempts to access this ref will fail.</h1> <time datetime="2022-09-28" class="text-gray-400">2022. 09. 28</time> <ul class="flex flex-wrap gap-2 mt-2 pb-5"> <li> <a href="/?tag=React" class="inline-block bg-green-50 text-lime-950 font-bold rounded-lg py-1 px-2 text-sm"> React </a> </li> </ul> </header> <div class="post-content prose prose-neutral max-w-none break-words"><p>함수형 컴포넌트는 refs로 주어질 수 없다</p>
+<p>이 ref로 접근하려는 시도는 실패할 것이다</p>
+<p>→ ?</p>
+<p>React</p>
+<ul>
+<li>Function components</li>
+<li>Class components</li>
+</ul>
+<p>두 가지가 존재</p>
+<p><a href="https://nextjs.org/docs/api-reference/next/link#if-the-child-is-a-functional-component">https://nextjs.org/docs/api-reference/next/link#if-the-child-is-a-functional-component</a></p>
+<p><a href="https://github.com/atomiks/tippyjs-react/issues/49">https://github.com/atomiks/tippyjs-react/issues/49</a></p>
+<p>Function Component를 쓰는 경우 child component를 React.forwardRef로 감싸고, 부모 컴포넌트에서 자식 컴포넌트에 passHref 옵션을 추가한다</p>
+<p><a href="https://reactjs.org/docs/react-api.html#reactforwardref">https://reactjs.org/docs/react-api.html#reactforwardref</a></p>
+<p>전달 받은 ref attribute를 하부 트리 내의 다른 컴포넌트로 전달하는 React 컴포넌트를 생성</p>
+<p>→ 완전 번거로움….왜?</p>
+<p>atomic 컴포넌트를 사용하는 다른 컴포넌트들은 일반적으로 내부 atomic 컴포넌트의 DOM 요소에 대한 ref 정보를 얻을 필요가 없다.</p>
+<p>컴포넌트들이 서로의 DOM 구조에 지나치게 의존하지 않기 때문.</p>
+<p>이런 캡슐화는 애플리케이션 레벨의 컴포넌트에서는 바람직하지만 재사용성이 높은 ‘말단’ 요소에서는 불편할 수 있다(e.g. 버튼 컴포넌트를 커스텀한 이전, 다음 버튼 컴포넌트 등)</p>
+<p>이런 atomic 컴포넌트들은 일반적인 DOM button, input과 유사한 방법으로 애플리케이션 전체에 걸쳐 사용되는 경향이 있고, 이들의 이벤트 핸들링을 위해서는 DOM 노드 접근이 불가피할 수 있다.</p>
+<p>→ 이때 forwardRef를 사용하는 것</p>
+<p>상위 컴포넌트는 forwardRef를 통해 전달된 ref를 얻고, 그것을 렌더링되는 DOM button으로 전달한다</p>
+<ol>
+<li><code>React.createRef</code>를 호출해서 <a href="https://ko.reactjs.org/docs/refs-and-the-dom.html">React ref</a>를 생성하고 <code>ref</code> 변수에 할당합니다.</li>
+<li><code>ref</code>를 JSX 속성으로 지정해서 <code>&#x3C;FancyButton ref={ref}></code>로 전달합니다.</li>
+<li>React는 이 <code>ref</code>를 <code>forwardRef</code> 내부의 <code>(props, ref) => ...</code> 함수의 두 번째 인자로 전달합니다.</li>
+<li>이 <code>ref</code>를 JSX 속성으로 지정해서 <code>&#x3C;button ref={ref}></code>으로 전달합니다.</li>
+<li>ref가 첨부되면 <code>ref.current</code>는 <code>&#x3C;button></code> DOM 노드를 가리키게 됩니다.</li>
+</ol>
+<p>→ 이해는 되었는데… 그냥 svg 아이콘을 묶어놓은 컴포넌트에조차 ref를 받을 필요가 있나?</p>
+<p><code>./node_modules/next/dist/client/link.js</code> 에 들어가보니, childProps에 ref를 setRef하는 코드가 있었다.</p>
+<p>이것 때문에 ref 관련 오류가 발생하는 듯…</p>
+<p>heroicons import해서 쓰니까 또 오류가 나지 않는다….(?)</p>
+<p>Class Component를 쓰면 별도로 이런 설정을 할 필요가 없어지는데 왜 그런 걸까?</p>
+<p><a href="https://ko.reactjs.org/docs/react-component.html">https://ko.reactjs.org/docs/react-component.html</a></p></div> <nav class="mt-16 pt-6 border-t grid gap-4 sm:grid-cols-2" aria-label="이전/다음 글"> <div> <a href="/posts/1e8296c3-3d92-80d3-bba6-cab973059277/" class="block group"> <span class="text-sm text-gray-400">← 이전 글</span> <span class="block font-bold group-hover:underline">왜 $reset을 쓰면 반응성이 사라질까</span> </a> </div> <div class="sm:text-right"> <a href="/posts/1dc296c3-3d92-80b6-8e64-cd0fab55724f/" class="block group"> <span class="text-sm text-gray-400">다음 글 →</span> <span class="block font-bold group-hover:underline">Vue 프로젝트에 Vite 도입하기</span> </a> </div> </nav> <a href="/" class="inline-block mt-10 text-gray-500 hover:underline">← 목록으로</a> </article>   </main> <footer class="w-full bg-white h-[59px] flex justify-center items-center border-t border-gray-100"><p class="text-sm">© <!-- -->2026<!-- --> nijeyhmi&#x27;s Blog. All rights reserved.</p></footer> </body></html>

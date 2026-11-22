@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><meta name="generator" content="Astro v4.16.18"><title>모닥불 EP.12 코드 리뷰할 시간이 어딨어요? 리뷰 | NHYELOG.DEV</title><meta name="description" content="토스 프론트엔드 챕터가 진행하는 코드 리뷰란?"><link rel="canonical" href="https://nijeyhmi.github.io/posts/202296c3-3d92-8048-be49-dd2c317f0e49/"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="NHYELOG.DEV"><meta property="og:title" content="모닥불 EP.12 코드 리뷰할 시간이 어딨어요? 리뷰 | NHYELOG.DEV"><meta property="og:description" content="토스 프론트엔드 챕터가 진행하는 코드 리뷰란?"><meta property="og:url" content="https://nijeyhmi.github.io/posts/202296c3-3d92-8048-be49-dd2c317f0e49/"><link rel="stylesheet" href="/_astro/index.DQtTDkGZ.css">
+<style>.post-content pre.astro-code{background-color:#f6f8fa!important;border:1px solid #e5e7eb;overflow-x:auto}.post-content :not(pre)>code{background:#f3f4f6;border-radius:.25rem;padding:.1em .35em;font-weight:500}.post-content :not(pre)>code:before,.post-content :not(pre)>code:after{content:none}.post-content table{display:block;overflow-x:auto}.post-content img{margin-left:auto;margin-right:auto;height:auto}.post-content details{border:1px solid #e5e7eb;border-radius:.5rem;padding:.5rem 1rem}.post-content summary{cursor:pointer;font-weight:700}.post-content .callout{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background:#f7f6f3;margin:1.5em 0}.post-content .callout-body{min-width:0}.post-content .callout-body>:first-child{margin-top:0}.post-content .callout-body>:last-child{margin-bottom:0}.post-content .callout-icon{line-height:1.75}.post-content li>input[type=checkbox]{margin:0 .4em 0 0}.post-content ul:has(>li>input[type=checkbox]){list-style:none;padding-left:.25em}
+</style></head> <body class="min-h-screen flex flex-col bg-white text-neutral-900"> <header class="w-full h-[60px] sticky top-0 left-0 z-50 bg-white border-b border-gray-100"><div class="max-w-[1140px] w-[92%] h-full mx-auto flex items-center"><a href="/" class="text-xl font-bold mr-6">NHYELOG</a></div></header> <main class="flex-1 w-full">  <article class="w-full max-w-[1050px] mx-auto px-4 md:px-6 pb-24"> <header class="border-b mb-10 pt-6"> <h1 class="text-3xl md:text-4xl font-bold mb-2 break-keep">모닥불 EP.12 코드 리뷰할 시간이 어딨어요? 리뷰</h1> <time datetime="2025-05-29" class="text-gray-400">2025. 05. 29</time> <ul class="flex flex-wrap gap-2 mt-2 pb-5"> <li> <a href="/?tag=%EB%A6%AC%EB%B7%B0" class="inline-block bg-green-50 text-lime-950 font-bold rounded-lg py-1 px-2 text-sm"> 리뷰 </a> </li> </ul> </header> <div class="post-content prose prose-neutral max-w-none break-words"><h3 id="코드-리뷰가-왜-필요한가">코드 리뷰가 왜 필요한가</h3>
+<p>저맥락자 → 고맥락자로 만들기 위해</p>
+<ul>
+<li>내가 휴가를 얼마나 편하게 갈 수 있느냐</li>
+<li>휴가를 갈 때 노트북을 두고 갈 수 있느냐</li>
+<li>저맥락자: 코드를 큰 맥락에서 이해하지 못 하는 사람</li>
+</ul>
+<p>→ 저맥락자와 고맥락자의 코드 리뷰는 다르다</p>
+<p>코드 조각만 보고 하는 리뷰를 반복하면서 고맥락자로 나아가야 함</p>
+<p>맥락에 기반해서 리뷰를 해야 한다는 것</p>
+<p>집단이 공유한 정보가 그 집단의 IQ</p>
+<p>일관적인 코드 스타일을 유지하는 장치</p>
+<ul>
+<li>모듈을 구성하는 방법이나 코드를 구성하는 스타일이 일관적이어야 이해가 쉬움</li>
+</ul>
+<h3 id="코드-리뷰를-효율적으로-할-수-있는-방법">코드 리뷰를 효율적으로 할 수 있는 방법</h3>
+<p><code>가독성 위원회</code></p>
+<p><a href="https://frontend-fundamentals.com/code-quality/">https://frontend-fundamentals.com/code-quality/</a></p>
+<ul>
+<li>코드의 가독성을 논의하기 위한 위원회</li>
+<li>코드가 잘못된 근본적 이유를 탐구</li>
+</ul>
+<p>→ 좋은 코드의 평가 기준을 맞추기</p>
+<p>좋은 코드의 기준</p>
+<ul>
+<li>가독성</li>
+<li>결합도</li>
+<li>응집도</li>
+<li>예측가능성</li>
+</ul>
+<p><code>코드 스멜 워킹그룹</code></p>
+<ul>
+<li>좋은 코드에 대해서 이야기하는 것도 좋지만 나쁜 코드에 대해 이야기할 장소도 필요하다</li>
+<li>4명이 주에 하나씩 패턴을 수집해옴→ 소통 비용을 줄이기 위해</li>
+</ul>
+<p>→ 고쳐야 할 코드의 싱크가 맞도록 하는 것을 기대</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>이를 위해서는 집단이 쓰는 용어나 멘탈 모델이 비슷해야 함</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>회사에서 논의를 잘 하고 지식을 잘 남겨놓자</p>
+<h3 id="코드-리뷰를-활성화시키기-위한-노력">코드 리뷰를 활성화시키기 위한 노력</h3>
+<p><code>코드 퀄리티 워킹그룹</code></p>
+<p>소규모 그룹의 코드 리뷰를 배틀을 붙임</p>
+<ul>
+<li>가장 먼저 코멘트가 달리는 팀</li>
+<li>가장 먼저 리뷰 기반 개선이 일어나는 팀</li>
+<li>구성원이 골고루 참여하는 팀</li>
+</ul>
+<p>→ 코드 리뷰를 리뷰</p>
+<p>이후 코드 리뷰에 대한 만족도도 올라감</p></div> <nav class="mt-16 pt-6 border-t grid gap-4 sm:grid-cols-2" aria-label="이전/다음 글"> <div> <a href="/posts/1de296c3-3d92-8029-9165-de2ab0b4990f/" class="block group"> <span class="text-sm text-gray-400">← 이전 글</span> <span class="block font-bold group-hover:underline">Lexical Editor</span> </a> </div> <div class="sm:text-right"> <a href="/posts/21e296c3-3d92-80b4-bd14-c7054063a694/" class="block group"> <span class="text-sm text-gray-400">다음 글 →</span> <span class="block font-bold group-hover:underline">채널데브톡</span> </a> </div> </nav> <a href="/" class="inline-block mt-10 text-gray-500 hover:underline">← 목록으로</a> </article>   </main> <footer class="w-full bg-white h-[59px] flex justify-center items-center border-t border-gray-100"><p class="text-sm">© <!-- -->2026<!-- --> nijeyhmi&#x27;s Blog. All rights reserved.</p></footer> </body></html>

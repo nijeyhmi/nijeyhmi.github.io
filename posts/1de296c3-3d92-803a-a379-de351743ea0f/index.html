@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><meta name="generator" content="Astro v4.16.18"><title>재사용성의 6가지 기준 | NHYELOG.DEV</title><meta name="description" content="The 6 Levels of Reusability 번역"><link rel="canonical" href="https://nijeyhmi.github.io/posts/1de296c3-3d92-803a-a379-de351743ea0f/"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="NHYELOG.DEV"><meta property="og:title" content="재사용성의 6가지 기준 | NHYELOG.DEV"><meta property="og:description" content="The 6 Levels of Reusability 번역"><meta property="og:url" content="https://nijeyhmi.github.io/posts/1de296c3-3d92-803a-a379-de351743ea0f/"><link rel="stylesheet" href="/_astro/index.DQtTDkGZ.css">
+<style>.post-content pre.astro-code{background-color:#f6f8fa!important;border:1px solid #e5e7eb;overflow-x:auto}.post-content :not(pre)>code{background:#f3f4f6;border-radius:.25rem;padding:.1em .35em;font-weight:500}.post-content :not(pre)>code:before,.post-content :not(pre)>code:after{content:none}.post-content table{display:block;overflow-x:auto}.post-content img{margin-left:auto;margin-right:auto;height:auto}.post-content details{border:1px solid #e5e7eb;border-radius:.5rem;padding:.5rem 1rem}.post-content summary{cursor:pointer;font-weight:700}.post-content .callout{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background:#f7f6f3;margin:1.5em 0}.post-content .callout-body{min-width:0}.post-content .callout-body>:first-child{margin-top:0}.post-content .callout-body>:last-child{margin-bottom:0}.post-content .callout-icon{line-height:1.75}.post-content li>input[type=checkbox]{margin:0 .4em 0 0}.post-content ul:has(>li>input[type=checkbox]){list-style:none;padding-left:.25em}
+</style></head> <body class="min-h-screen flex flex-col bg-white text-neutral-900"> <header class="w-full h-[60px] sticky top-0 left-0 z-50 bg-white border-b border-gray-100"><div class="max-w-[1140px] w-[92%] h-full mx-auto flex items-center"><a href="/" class="text-xl font-bold mr-6">NHYELOG</a></div></header> <main class="flex-1 w-full">  <article class="w-full max-w-[1050px] mx-auto px-4 md:px-6 pb-24"> <header class="border-b mb-10 pt-6"> <h1 class="text-3xl md:text-4xl font-bold mb-2 break-keep">재사용성의 6가지 기준</h1> <time datetime="2024-01-30" class="text-gray-400">2024. 01. 30</time> <ul class="flex flex-wrap gap-2 mt-2 pb-5"> <li> <a href="/?tag=Vue" class="inline-block bg-green-50 text-lime-950 font-bold rounded-lg py-1 px-2 text-sm"> Vue </a> </li><li> <a href="/?tag=%EB%B2%88%EC%97%AD" class="inline-block bg-green-50 text-lime-950 font-bold rounded-lg py-1 px-2 text-sm"> 번역 </a> </li> </ul> </header> <div class="post-content prose prose-neutral max-w-none break-words"><p>*해당 블로그를 해석한 글입니다.</p>
+<p><a href="https://michaelnthiessen.com/6-levels-of-reusability/">https://michaelnthiessen.com/6-levels-of-reusability/</a></p>
+<p>모든 개발자는 적은 코드로 많은 것을 얻길 원한다.</p>
+<p>이를 위해 우리는 컴포넌트를 만들어 한 번 이상 이를 재사용하고자 한다.</p>
+<p>어떤 컴포넌트는 기본적인 재사용성만 필요하지만, 어떤 것은 더 복잡한 기술이 필요하다.</p>
+<p>저자는 6단계의 재사용성을 확인했으나, 이보다 더 많은 재사용성이 있을 것.</p>
+<h2 id="1-templating">1. Templating</h2>
+<p>여기저기에 복사, 붙여넣기를 하는 것 대신 하나의 컴포넌트 안에 해당 코드를 묶어 놓는다.</p>
+<p>컴포넌트를 재사용하는 것에는 두 가지 장점이 있다</p>
+<ol>
+<li>미래에 변경사항이 있을 때 보다 쉽게 수정이 가능하다. 한 곳의 코드만 수정하면 되기 때문</li>
+<li>복사해서 사용한 코드의 위치를 일일이 기억할 필요 없다.</li>
+</ol>
+<p>→ 가장 기본적인 재사용성</p>
+<h2 id="2-configuration">2. Configuration</h2>
+<p>몇몇 컴포넌트들은 작동하는 방식에 따라 변동이 있다.</p>
+<p>예를 들면 Button 컴포넌트가 있다고 했을 때, 이는 아이콘만 있는 상위 버전이 있을 수 있음.</p>
+<p>아예 새로운 컴포넌트를 생성하는 대신 props를 이용해 다른 타입을 전환할 수 있다.</p>
+<p>props를 사용하는 것은 컴포넌트 사용에 있어 보다 유연성을 부여한다.</p>
+<h2 id="3-adaptability">3. Adaptability</h2>
+<p>configuration의 가장 큰 문제점은 통찰이 부족하다는 것이다.</p>
+<p>개발자는 미래의 니즈를 예측하여 컴포넌트 내에 props를 넣어야 한다.</p>
+<p>하지만 개발자가 컴포넌트를 적용 가능하게 만든다면, 이는 컴포넌트를 변경할 필요 없이 다양하게 사용할 수 있도록 할 것이다.</p>
+<p>우리는 이를 slot을 통해 구현할 수 있다.</p>
+<p>예를 들어 text prop을 Button 컴포넌트 안에 넣는 대신, 우리는 default slot을 이용할 수 있다.</p>
+<p>이런 경우 개발자는 string이나 number와 같은 타입에 구애받지 않는다.</p>
+<p>만약 버튼 안에 spinner를 넣고 싶다면, slot의 경우 얼마든지 가능하다.</p>
+<h2 id="4-inversion">4. Inversion</h2>
+<p>위와 유사하게 복잡한 markup을 child component에 전달하는 대신 렌더링에 대한 지침을 전달할 수 있다.</p>
+<p>이는 테이크아웃을 주문하는 대신 레시피를 따르는 것과 같다.</p>
+<p>레시피를 따르는 데에는 조금 더 품이 따르지만, 개발자는 본인이 만드는 모든 것을 컨트롤할 수 있다.</p>
+<p>우리는 scoped slots를 사용함으로써 우리의 컴포넌트에 더 복잡한 코드를 재사용하기 쉽게 추가할 수 있다.</p>
+<p><a href="https://joshua1988.github.io/vue-camp/reuse/scoped-slot.html#%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A9%E1%86%B8%E1%84%83%E1%85%B3-%E1%84%89%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%86%BA-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3-%E1%84%92%E1%85%A7%E1%86%BC%E1%84%89%E1%85%B5%E1%86%A8">https://joshua1988.github.io/vue-camp/reuse/scoped-slot.html#%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A9%E1%86%B8%E1%84%83%E1%85%B3-%E1%84%89%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%86%BA-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3-%E1%84%92%E1%85%A7%E1%86%BC%E1%84%89%E1%85%B5%E1%86%A8</a></p>
+<h2 id="5-extension">5. Extension</h2>
+<p>Adaptability와 Inversion과 함께 우리는 컴포넌트의 재사용성을 극대화할 수 있는 필수적인 기술이 있다.</p>
+<p>다음 단계는 이 기술을 컴포넌트 전역에 추가함으로써 더 쉽게 그 목적을 확장하는 것이다.</p>
+<p>우리는 named slots를 통해 하나 이상의 포인트를 컴포넌트에 추가할 수 있다.</p>
+<p>우리는 이를 통해 수많은 다른 옵션을 컴포넌트의 다양한 포인트에 적용할 수 있다.</p>
+<div class="callout"><span class="callout-icon">⭐</span><div class="callout-body">
+<p>Vue 3에서는 scoped slots, named slots의 기능을 통합한 v-slot 기능이 추가되었다.</p>
+<p><a href="https://joshua1988.github.io/vue-camp/reuse/v-slot.html#v-slot-%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8">https://joshua1988.github.io/vue-camp/reuse/v-slot.html#v-slot-%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8</a></p>
+</div></div>
+<h2 id="6-nesting">6. Nesting</h2>
+<p>마지막은 이러한 extension 포인트들을 하나 이상의 컴포넌트 레이어에 넘기는 것이다.</p>
+<p>개발자는 일반적인 기본 컴포넌트에서 개발을 시작한다. 그 다음 컴포넌트는 조금 더 구체적이고 기본 컴포넌트를 확장하는 형식일 것이다. 그렇다면 실제로 원하는 동작을 하는 마지막 컴포넌트까지 이 일을 반복한다.</p>
+<p>이는 정확히 <code>Animal → Mammal → Dog → Poodle</code> 과 같은 구체화 과정을 거치는 것이다.</p>
+<p>우리는 이 과정을 통해 <code>Mammal → Cat, Tiger, Lion</code>과 같은 다양화된 컴포넌트 제작도 할 수 있다.</p></div> <nav class="mt-16 pt-6 border-t grid gap-4 sm:grid-cols-2" aria-label="이전/다음 글"> <div> <a href="/posts/1dc296c3-3d92-80b6-8e64-cd0fab55724f/" class="block group"> <span class="text-sm text-gray-400">← 이전 글</span> <span class="block font-bold group-hover:underline">Vue 프로젝트에 Vite 도입하기</span> </a> </div> <div class="sm:text-right"> <a href="/posts/1de296c3-3d92-80ac-a783-e510807b6c22/" class="block group"> <span class="text-sm text-gray-400">다음 글 →</span> <span class="block font-bold group-hover:underline">함수형 프로그래밍에 대한 고찰</span> </a> </div> </nav> <a href="/" class="inline-block mt-10 text-gray-500 hover:underline">← 목록으로</a> </article>   </main> <footer class="w-full bg-white h-[59px] flex justify-center items-center border-t border-gray-100"><p class="text-sm">© <!-- -->2026<!-- --> nijeyhmi&#x27;s Blog. All rights reserved.</p></footer> </body></html>

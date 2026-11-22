@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><meta name="generator" content="Astro v4.16.18"><title>함수형 프로그래밍에 대한 고찰 | NHYELOG.DEV</title><meta name="description" content="함수형 프로그래밍이 무엇인지 알아보기"><link rel="canonical" href="https://nijeyhmi.github.io/posts/1de296c3-3d92-80ac-a783-e510807b6c22/"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="NHYELOG.DEV"><meta property="og:title" content="함수형 프로그래밍에 대한 고찰 | NHYELOG.DEV"><meta property="og:description" content="함수형 프로그래밍이 무엇인지 알아보기"><meta property="og:url" content="https://nijeyhmi.github.io/posts/1de296c3-3d92-80ac-a783-e510807b6c22/"><link rel="stylesheet" href="/_astro/index.DQtTDkGZ.css">
+<style>.post-content pre.astro-code{background-color:#f6f8fa!important;border:1px solid #e5e7eb;overflow-x:auto}.post-content :not(pre)>code{background:#f3f4f6;border-radius:.25rem;padding:.1em .35em;font-weight:500}.post-content :not(pre)>code:before,.post-content :not(pre)>code:after{content:none}.post-content table{display:block;overflow-x:auto}.post-content img{margin-left:auto;margin-right:auto;height:auto}.post-content details{border:1px solid #e5e7eb;border-radius:.5rem;padding:.5rem 1rem}.post-content summary{cursor:pointer;font-weight:700}.post-content .callout{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background:#f7f6f3;margin:1.5em 0}.post-content .callout-body{min-width:0}.post-content .callout-body>:first-child{margin-top:0}.post-content .callout-body>:last-child{margin-bottom:0}.post-content .callout-icon{line-height:1.75}.post-content li>input[type=checkbox]{margin:0 .4em 0 0}.post-content ul:has(>li>input[type=checkbox]){list-style:none;padding-left:.25em}
+</style></head> <body class="min-h-screen flex flex-col bg-white text-neutral-900"> <header class="w-full h-[60px] sticky top-0 left-0 z-50 bg-white border-b border-gray-100"><div class="max-w-[1140px] w-[92%] h-full mx-auto flex items-center"><a href="/" class="text-xl font-bold mr-6">NHYELOG</a></div></header> <main class="flex-1 w-full">  <article class="w-full max-w-[1050px] mx-auto px-4 md:px-6 pb-24"> <header class="border-b mb-10 pt-6"> <h1 class="text-3xl md:text-4xl font-bold mb-2 break-keep">함수형 프로그래밍에 대한 고찰</h1> <time datetime="2024-01-30" class="text-gray-400">2024. 01. 30</time> <ul class="flex flex-wrap gap-2 mt-2 pb-5"> <li> <a href="/?tag=React" class="inline-block bg-green-50 text-lime-950 font-bold rounded-lg py-1 px-2 text-sm"> React </a> </li> </ul> </header> <div class="post-content prose prose-neutral max-w-none break-words"><h2 id="함수형-프로그래밍">함수형 프로그래밍</h2>
+<p>프로그램을 함수의 계산으로 본다</p>
+<ul>
+<li>함수가 1급 객체/1급 시민</li>
+<li>불변성(Immutability)</li>
+<li>순수함수(Pure Function)</li>
+<li>고차 함수(High-Order Function)</li>
+<li>합성 함수(Function Composition)</li>
+<li>선언형(추상화가 높아지고 직관적이 된다. 사람이 이해하기 편리.)</li>
+</ul>
+<p>→ 불변성과 순수함수를 지키고 최대한 선언형 방식의 프로그램이 되도록 지켜야할 규칙을 따르는 것</p>
+<p>리액트는 함수 컴포넌트에 무게를 두고 있다</p>
+<ol>
+<li>
+<p>리액트의 핵심 개념 중 하나인 Hooks는 함수 컴포넌트에서만 동작</p>
+</li>
+<li>
+<p>훅을 도입한 이유</p>
+<blockquote>
+<p>Classes confuse both people and machinesIn addition to making code reuse and code organization more difficult, we’ve found that classes can be a large barrier to learning React... However, we found that class components can encourage unintentional patterns that make these optimizations fall back to a slower path. Classes present issues for today’s tools, too.</p>
+</blockquote>
+<p>클래스는 사람과 기계를 혼란스럽게 합니다. 코드 재사용 및 코드 조직을 더 어렵게 만드는 것 외에도, 우리는 클래스가 React를 배우는 데 큰 장벽이 될 수 있다는 것을 발견했습니다... 그러나 우리는 클래스 컴포넌트가 이러한 최적화가 더 느린 경로로 되돌아가게 만드는 의도하지 않은 패턴을 장려할 수 있다는 것을 발견했습니다. 클래스는 오늘날의 도구에도 문제를 제기합니다.</p>
+</li>
+<li>
+<p>리액트는 단방향 데이터 흐름을 강제하는 구조, 이는 함수형 접근에 더 잘 들어맞는 방식</p>
+<p>→ 리액트의 상태 관리 라이브러리는 기본적으로 불변 상태를 받아 불변 상태를 반환하는 함수를 바탕으로 한다</p>
+</li>
+</ol>
+<p><em>클래스형 컴포넌트의 경우 중복 코드양이 많고 가독성이 떨어져 이를 해결하기 위해 등장</em></p></div> <nav class="mt-16 pt-6 border-t grid gap-4 sm:grid-cols-2" aria-label="이전/다음 글"> <div> <a href="/posts/1de296c3-3d92-803a-a379-de351743ea0f/" class="block group"> <span class="text-sm text-gray-400">← 이전 글</span> <span class="block font-bold group-hover:underline">재사용성의 6가지 기준</span> </a> </div> <div class="sm:text-right"> <a href="/posts/1de296c3-3d92-80ca-8eb7-e876150fdd27/" class="block group"> <span class="text-sm text-gray-400">다음 글 →</span> <span class="block font-bold group-hover:underline">리액트 앱을 다시 빠르게 만드는 법</span> </a> </div> </nav> <a href="/" class="inline-block mt-10 text-gray-500 hover:underline">← 목록으로</a> </article>   </main> <footer class="w-full bg-white h-[59px] flex justify-center items-center border-t border-gray-100"><p class="text-sm">© <!-- -->2026<!-- --> nijeyhmi&#x27;s Blog. All rights reserved.</p></footer> </body></html>
