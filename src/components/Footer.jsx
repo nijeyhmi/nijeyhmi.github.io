@@ -1,10 +1,10 @@
 const Footer = () => {
   return (
-    <div className="w-full bg-white overflow-hidden h-[59px] flex justify-center items-center">
+    <footer className="w-full bg-white h-[59px] flex justify-center items-center border-t border-gray-100">
       <p className="text-sm">
         &copy; {new Date().getFullYear()} nijeyhmi's Blog. All rights reserved.
       </p>
-    </div>
+    </footer>
   );
 };
 
