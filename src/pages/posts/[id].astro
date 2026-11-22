@@ -1,23 +1,23 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import PostDetail from '../../components/PostDetail';
+import Layout from "../../layouts/Layout.astro";
+import PostDetail from "../../components/PostDetail.astro";
+import { getAllPosts, postUrl } from "../../lib/posts";
+import { renderMarkdown } from "../../lib/markdown";
 
-import { getPosts } from '../../lib/notion';
-
-export async function getStaticPaths() {
-  const {posts} = await getPosts(); 
-
-  return posts.map((post) => ({
-    params: { id: post.id }, 
+export function getStaticPaths() {
+  const posts = getAllPosts();
+  const link = (p) => p && { title: p.title, url: postUrl(p.id) };
+  // posts 는 최신순: 이전 글 = 더 오래된 글
+  return posts.map((post, i) => ({
+    params: { id: post.id },
+    props: { post, prev: link(posts[i + 1]), next: link(posts[i - 1]) },
   }));
 }
 
-const { id } = Astro.params;
-
-import { getPostDetail } from '../../lib/notion';
-const content = await getPostDetail(id);
+const { post, prev, next } = Astro.props;
+const html = await renderMarkdown(post.markdown);
 ---
 
-<Layout>
-  <PostDetail content={content} />
+<Layout title={`${post.title} | NHYELOG.DEV`} description={post.summary || post.title} type="article">
+  <PostDetail post={post} html={html} prev={prev} next={next} />
 </Layout>

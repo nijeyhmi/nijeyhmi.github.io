@@ -1,0 +1,117 @@
+---
+import { formatDate } from "../lib/posts";
+
+const { post, html, prev, next } = Astro.props;
+---
+
+<article class="w-full max-w-[1050px] mx-auto px-4 md:px-6 pb-24">
+  <header class="border-b mb-10 pt-6">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2 break-keep">{post.title}</h1>
+    <time datetime={post.date} class="text-gray-400">{formatDate(post.date)}</time>
+    {
+      post.tags.length > 0 && (
+        <ul class="flex flex-wrap gap-2 mt-2 pb-5">
+          {post.tags.map((tag) => (
+            <li>
+              <a
+                href={`/?tag=${encodeURIComponent(tag)}`}
+                class="inline-block bg-green-50 text-lime-950 font-bold rounded-lg py-1 px-2 text-sm"
+              >
+                {tag}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </header>
+
+  <div class="post-content prose prose-neutral max-w-none break-words" set:html={html} />
+
+  <nav class="mt-16 pt-6 border-t grid gap-4 sm:grid-cols-2" aria-label="이전/다음 글">
+    <div>
+      {
+        prev && (
+          <a href={prev.url} class="block group">
+            <span class="text-sm text-gray-400">← 이전 글</span>
+            <span class="block font-bold group-hover:underline">{prev.title}</span>
+          </a>
+        )
+      }
+    </div>
+    <div class="sm:text-right">
+      {
+        next && (
+          <a href={next.url} class="block group">
+            <span class="text-sm text-gray-400">다음 글 →</span>
+            <span class="block font-bold group-hover:underline">{next.title}</span>
+          </a>
+        )
+      }
+    </div>
+  </nav>
+  <a href="/" class="inline-block mt-10 text-gray-500 hover:underline">← 목록으로</a>
+</article>
+
+<style is:global>
+  .post-content pre.astro-code {
+    background-color: #f6f8fa !important;
+    border: 1px solid #e5e7eb;
+    overflow-x: auto;
+  }
+  .post-content :not(pre) > code {
+    background: #f3f4f6;
+    border-radius: 0.25rem;
+    padding: 0.1em 0.35em;
+    font-weight: 500;
+  }
+  .post-content :not(pre) > code::before,
+  .post-content :not(pre) > code::after {
+    content: none;
+  }
+  .post-content table {
+    display: block;
+    overflow-x: auto;
+  }
+  .post-content img {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+  }
+  .post-content details {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  .post-content summary {
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .post-content .callout {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #f7f6f3;
+    margin: 1.5em 0;
+  }
+  .post-content .callout-body {
+    min-width: 0;
+  }
+  .post-content .callout-body > :first-child {
+    margin-top: 0;
+  }
+  .post-content .callout-body > :last-child {
+    margin-bottom: 0;
+  }
+  .post-content .callout-icon {
+    line-height: 1.75;
+  }
+  .post-content li > input[type="checkbox"] {
+    margin: 0 0.4em 0 0;
+  }
+  .post-content ul:has(> li > input[type="checkbox"]) {
+    list-style: none;
+    padding-left: 0.25em;
+  }
+</style>
