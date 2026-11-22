@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useState } from "react";
 import PostList from "./PostList";
 import Sidebar from "./Sidebar";
 import Pagination from "./Pagination";
@@ -15,9 +15,11 @@ const Container = ({ posts = [] }) => {
   // SSR 시점에는 URL 을 모르므로 전체/1페이지로 렌더하고, hydrate 후 쿼리와 동기화한다.
   const [{ tag: activeTag, page }, setState] = useState({ tag: null, page: 1 });
 
-  useEffect(() => {
+  // 레이아웃 이펙트에서 동기화해야 쿼리 반영 전 화면이 칠해지지 않는다.
+  useLayoutEffect(() => {
     const sync = () => setState(readQuery());
     sync();
+    document.documentElement.classList.remove("query-pending");
     window.addEventListener("popstate", sync);
     return () => window.removeEventListener("popstate", sync);
   }, []);
@@ -61,7 +63,7 @@ const Container = ({ posts = [] }) => {
         />
       </div>
       <div className="flex flex-col lg:flex-row lg:justify-evenly gap-10">
-        <div className="w-full lg:max-w-[700px] mb-[60px] lg:px-6 min-w-0">
+        <div className="w-full lg:max-w-[700px] mb-[60px] lg:px-6 min-w-0" data-post-list>
           {activeTag && (
             <p className="text-sm text-gray-500">
               <span className="font-bold text-lime-950">#{activeTag}</span> 태그 글{" "}

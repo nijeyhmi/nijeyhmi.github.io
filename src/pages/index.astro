@@ -8,5 +8,18 @@ const posts = getPostSummaries();
 
 <Layout>
   <h1 class="sr-only">NHYELOG.DEV 글 목록</h1>
+  <!-- ?tag=, ?page= 로 진입하면 hydrate 전에 전체 목록이 잠깐 보이므로, 동기화 전까지 목록을 숨긴다. -->
+  <script is:inline>
+    if (location.search) {
+      document.documentElement.classList.add("query-pending");
+      // hydrate 가 실패해도 목록이 영영 숨겨지지 않도록 안전장치
+      setTimeout(() => document.documentElement.classList.remove("query-pending"), 3000);
+    }
+  </script>
+  <style is:global>
+    .query-pending [data-post-list] {
+      visibility: hidden;
+    }
+  </style>
   <Container client:load posts={posts} />
 </Layout>
