@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# generated from Notion at build time (scripts/fetch-notion.js)
+src/generated/
+public/notion-images/
