@@ -1,8 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Container from '../components/Container';
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container";
+import { getPostSummaries } from "../lib/posts";
+
+const posts = getPostSummaries();
 ---
 
 <Layout>
-	<Container client:load />
+  <h1 class="sr-only">NHYELOG.DEV 글 목록</h1>
+  <Container client:load posts={posts} />
 </Layout>

@@ -1,11 +1,16 @@
+const btn = "h-[36px] min-w-[36px] px-[6px] rounded-full text-lime-950";
+
 const Pagination = ({ startPage, endPage, totalPages, navigatePage, page }) => {
+  if (totalPages <= 1) return null;
   return (
-    <nav className="pt-[24px]">
-      <ul className="flex m-0 p-0">
+    <nav className="pt-[24px]" aria-label="페이지 이동">
+      <ul className="flex flex-wrap gap-[6px] m-0 p-0">
         {startPage > 1 && (
-          <li className="ml-[6px]">
+          <li>
             <button
-              className="h-[36px] min-w-[36px] px-[6px] rounded-full text-lime-950"
+              type="button"
+              className={btn}
+              aria-label="이전 페이지 묶음"
               onClick={() => navigatePage(startPage - 1)}
             >
               {"<"}
@@ -14,10 +19,13 @@ const Pagination = ({ startPage, endPage, totalPages, navigatePage, page }) => {
         )}
         {Array.from({ length: endPage - startPage + 1 }, (_, idx) => {
           const pageNum = startPage + idx;
+          const isCurrent = pageNum === page;
           return (
-            <li className="ml-[6px]" key={pageNum}>
+            <li key={pageNum}>
               <button
-                className={`h-[36px] min-w-[36px] px-[6px] rounded-full text-lime-950 ${idx + 1 === page ? "bg-green-50 font-bold" : ""}`}
+                type="button"
+                className={`${btn} ${isCurrent ? "bg-green-50 font-bold" : ""}`}
+                aria-current={isCurrent ? "page" : undefined}
                 onClick={() => navigatePage(pageNum)}
               >
                 {pageNum}
@@ -26,9 +34,11 @@ const Pagination = ({ startPage, endPage, totalPages, navigatePage, page }) => {
           );
         })}
         {endPage < totalPages && (
-          <li className="ml-[6px]">
+          <li>
             <button
-              className="h-[36px] min-w-[36px] px-[6px] rounded-full text-lime-950"
+              type="button"
+              className={btn}
+              aria-label="다음 페이지 묶음"
               onClick={() => navigatePage(endPage + 1)}
             >
               {">"}

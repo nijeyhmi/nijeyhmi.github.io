@@ -1,91 +1,68 @@
-import { useEffect, useState } from "react";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-const Sidebar = ({ tags, selectTag, activeTag }) => {
-  const [recommendedPosts, setRecommendedPosts] = useState([]);
-  useEffect(() => {
-    fetch("/recommended.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setRecommendedPosts(data);
-      });
-  }, []);
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
+const Sidebar = ({ tags = [], recommended = [], selectTag, activeTag }) => {
   return (
-    <div className="mb-[100px] pt-0 px-[24px] pb-[50px] border-l-2">
+    <aside className="w-full lg:w-[300px] shrink-0 mb-[100px] pb-[50px] pt-6 border-t-2 lg:pt-0 lg:px-6 lg:border-t-0 lg:border-l-2">
       {/* 추천글 */}
-      <div className="w-[300px]">
-        <span className="font-bold text-gray-500">Recommended</span>
-        {recommendedPosts.map((post) => {
-          return (
-            <article key={post.id}>
-              <a href={post.url}>
-                <div className="flex flex-col py-[12px]">
-                  <span className="font-bold">{post.title}</span>
-                  <span className="mt-[3px] text-[14px]">{post.summary}</span>
-                </div>
-              </a>
-            </article>
-          );
-        })}
-      </div>
+      <section>
+        <h2 className="font-bold text-gray-500">Recommended</h2>
+        {recommended.map((post) => (
+          <article key={post.id}>
+            <a href={post.url} className="flex flex-col py-[12px]">
+              <span className="font-bold">{post.title}</span>
+              <span className="mt-[3px] text-[14px]">{post.summary}</span>
+            </a>
+          </article>
+        ))}
+      </section>
       {/* 태그 */}
-      <div className="w-[300px] mt-[24px]">
-        <span className="font-bold text-gray-500">Tag</span>
-        <div className="relative mt-[12px]">
-          {tags.map((tag, idx) => {
-            return (
-              <div
-                className="mr-[6px] mb-[8px] inline-block hover:cursor-pointer"
-                key={idx}
+      <section className="mt-[24px]">
+        <h2 className="font-bold text-gray-500">Tag</h2>
+        <ul className="mt-[12px] flex flex-wrap gap-x-[6px] gap-y-[8px]">
+          {tags.map((tag) => (
+            <li key={tag}>
+              <button
+                type="button"
+                aria-pressed={activeTag === tag}
+                className={`px-[10px] py-1 inline-flex justify-center items-center rounded-2xl text-lime-950 font-bold text-sm ${activeTag === tag ? "bg-green-300" : "bg-green-50"}`}
+                onClick={() => selectTag(tag)}
               >
-                <button
-                  className={`pl-[10px] pr-[8px] py-[4px] px-[10px] inline-flex justify-center items-center rounded-2xl text-lime-950 font-bold text-sm ${activeTag === tag ? " bg-green-300" : " bg-green-50"}`}
-                  onClick={() => selectTag(tag)}
-                >
-                  {tag}
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      {/* About  */}
-      <div className="w-[300px] mt-[24px]">
-        <span className="font-bold text-gray-500">About</span>
-        <div className="">
-          <div className="flex">
-            <div className="inline-flex justify-center items-center align-top mr-[8px]">
-              <div className="w-[85px] h-[85px] rounded-full mr-[15px]">
-                <img src="/portrait.png" alt="" />
-              </div>
-              <div className="inline-flex flex-col justify-start">
-                <span className="font-bold">녜진(nijeyhmi)</span>
-                <div className="inline-flex flex-row mt-[12px]">
-                  <a href="https://github.com/nijeyhmi?tab=repositories">
-                    <FaGithub className="w-6 h-6 hover:cursor-pointer" />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/%ED%98%9C%EC%A7%84-%EA%B6%8C-b55915194/"
-                    className="ml-[6px]"
-                  >
-                    <FaLinkedin className="w-6 h-6 hover:cursor-pointer" />
-                  </a>
-                </div>
-              </div>
+                {tag}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+      {/* About */}
+      <section className="mt-[24px]">
+        <h2 className="font-bold text-gray-500">About</h2>
+        <div className="flex items-center mt-2">
+          <img
+            src="/portrait.webp"
+            alt="녜진(nijeyhmi) 프로필 사진"
+            width="85"
+            height="85"
+            loading="lazy"
+            className="w-[85px] h-[85px] rounded-full mr-[15px] object-cover"
+          />
+          <div className="inline-flex flex-col justify-start">
+            <span className="font-bold">녜진(nijeyhmi)</span>
+            <div className="inline-flex flex-row mt-[12px]">
+              <a href="https://github.com/nijeyhmi?tab=repositories" aria-label="GitHub">
+                <FaGithub className="w-6 h-6" aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/%ED%98%9C%EC%A7%84-%EA%B6%8C-b55915194/"
+                className="ml-[6px]"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin className="w-6 h-6" aria-hidden="true" />
+              </a>
             </div>
           </div>
-          <ul className="flex flex-row">
-            <li className="pl-[10px] pr-[8px] py-[4px] px-[10px] inline-flex justify-center items-center rounded-2xl bg-green-50">
-              Portfolio
-            </li>
-            <li className="ml-[6px] pl-[10px] pr-[8px] py-[4px] px-[10px] inline-flex justify-center items-center rounded-2xl bg-green-50">
-              TIL
-            </li>
-          </ul>
         </div>
-      </div>
-    </div>
+      </section>
+    </aside>
   );
 };
 
