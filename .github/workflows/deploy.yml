@@ -28,17 +28,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       # Notion에서 내려받은 이미지를 실행 간에 재사용 (변경된 파일만 새로 받음)
       - name: Restore Notion images cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: public/notion-images
           key: notion-images-${{ github.run_id }}
